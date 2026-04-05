@@ -1,0 +1,13 @@
+{
+  "containerOverrides": [
+    {
+      "name": "core-api",
+      "command": [
+        "node",
+        "--input-type=module",
+        "-e",
+        "import { execSync } from 'node:child_process';\nexecSync('cd /app/deeptrader-backend && ./run_all_migrations.sh --status', { stdio: 'inherit' });\n"
+      ]
+    }
+  ]
+}

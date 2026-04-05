@@ -1,0 +1,28 @@
+{
+  "gate_a_net_economics": {
+    "aggregate_net_pnl": 0.0,
+    "pass": false,
+    "positive_symbols": [],
+    "rule": ">=0 net in at least 2 symbols and aggregate >=0",
+    "symbol_net": {}
+  },
+  "gate_b_cost_realism": {
+    "pass": true,
+    "rule": "median(realized_cost_bps - expected_cost_bps) <= 3 bps per symbol (>=5 matched pairs)",
+    "symbols": {}
+  },
+  "gate_c_churn": {
+    "active_symbols": [],
+    "pass": false,
+    "rule": "canceled-to-filled ratio <= 3:1 on active symbols",
+    "symbols": {}
+  },
+  "gate_d_exit_quality": {
+    "forced_close_rate_pct": 0.0,
+    "pass": true,
+    "rule": "forced/safety exits < 10% of closes"
+  },
+  "next_action": "Execution-first fixes: reduce cancel/repost churn and forced exits before any signal threshold tuning.",
+  "overall_pass": false,
+  "recommended_ladder_step": 1
+}

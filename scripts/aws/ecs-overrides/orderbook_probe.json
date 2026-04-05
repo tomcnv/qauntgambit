@@ -1,0 +1,13 @@
+{
+  "containerOverrides": [
+    {
+      "name": "data-persistence-worker",
+      "command": [
+        "python",
+        "-c",
+        "import os,asyncio,asyncpg\n\nTABLES = [\n  ('orderbook_events', 'ts'),\n  ('orderbook_snapshots', 'ts'),\n]\n\nasync def table_stats(conn, table, ts_col):\n  reg = await conn.fetchval(\"select to_regclass('public.'||$1)\", table)\n  if not reg:\n    return {'table': table, 'exists': False}\n\n  n = await conn.fetchval(f'select count(1) from {reg}')\n  min_ts = await conn.fetchval(f'select min({ts_col}) from {reg}')\n  max_ts = await conn.fetchval(f'select max({ts_col}) from {reg}')\n\n  by_symbol = []\n  try:\n    rows = await conn.fetch(\n      f\"select symbol, count(1)::bigint as n, max({ts_col}) as max_ts from {reg} group by symbol order by max_ts desc nulls last limit 10\"\n    )\n    by_symbol = [dict(r) for r in rows]\n  except Exception as e:\n    by_symbol = [{'error': str(e)}]\n\n  return {\n    'table': table,\n    'exists': True,\n    'rows': int(n or 0),\n    'min_ts': str(min_ts) if min_ts else None,\n    'max_ts': str(max_ts) if max_ts else None,\n    'top_symbols': by_symbol,\n  }\n\nasync def main():\n  url = os.environ.get('BOT_TIMESCALE_URL') or ''\n  print('BOT_TIMESCALE_URL_set', bool(url))\n  if not url:\n    raise SystemExit('BOT_TIMESCALE_URL is missing')\n\n  conn = await asyncpg.connect(url)\n  try:\n    server = await conn.fetchrow('select version() as version, now() as now')\n    print('server', dict(server))\n\n    for table, ts_col in TABLES:\n      stats = await table_stats(conn, table, ts_col)\n      print('table_stats', stats)\n\n    # Quick sanity: do we have any very recent orderbook activity?\n    # This assumes ts is timestamptz.\n    recent = await conn.fetchval(\n      \"select count(1) from orderbook_events where ts > now() - interval '5 minutes'\"\n    )\n    print('orderbook_events_last_5m', int(recent or 0))\n  finally:\n    await conn.close()\n\nasyncio.run(main())\n"
+      ]
+    }
+  ]
+}
+

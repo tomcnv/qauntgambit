@@ -1,0 +1,48 @@
+{
+  "bot_id": "bf167763-fee1-4f11-ab9a-6fddadf125de",
+  "generated_at": "2026-02-25T09:27:39.710849+00:00",
+  "grade": {
+    "checks": {
+      "aligned_win_rate": {
+        "actual": 0.0,
+        "pass": false,
+        "threshold": 52.0
+      },
+      "alignment_rate": {
+        "actual": 0.0,
+        "pass": false,
+        "threshold": 45.0
+      },
+      "min_trades": {
+        "actual": 10,
+        "pass": false,
+        "threshold": 40
+      },
+      "p_hat_ece": {
+        "actual": 0.85264,
+        "pass": false,
+        "threshold": 0.22
+      }
+    },
+    "overall_pass": false
+  },
+  "since": "2026-02-24T09:27:39.674102+00:00",
+  "summary": {
+    "aligned_trades": 0,
+    "aligned_win_rate_pct": 0.0,
+    "alignment_rate_pct": 0.0,
+    "misaligned_trades": 0,
+    "p_hat_brier": 0.740097,
+    "p_hat_ece_10": 0.85264,
+    "p_hat_pairs": 2,
+    "trades": 10
+  },
+  "tenant_id": "11111111-1111-1111-1111-111111111111",
+  "thresholds": {
+    "max_p_hat_ece": 0.22,
+    "min_aligned_win_rate_pct": 52.0,
+    "min_directional_alignment_rate_pct": 45.0,
+    "min_trades": 40
+  },
+  "window_hours": 24
+}

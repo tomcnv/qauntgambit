@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground min-h-screen antialiased;
+    font-feature-settings: "ss01" 1, "cv02" 1;
+    background-image: var(--bg-gradient);
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  /* Custom Scrollbar Styles - Dark mode */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(220 20% 20% / 0.5) transparent;
+  }
+
+  /* WebKit browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(220 20% 25% / 0.4);
+    border-radius: 3px;
+    transition: background 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(220 20% 35% / 0.6);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  /* Light mode scrollbar */
+  .light ::-webkit-scrollbar-thumb {
+    background: hsl(220 10% 70% / 0.4);
+  }
+
+  .light ::-webkit-scrollbar-thumb:hover {
+    background: hsl(220 10% 60% / 0.6);
+  }
+
+  .light * {
+    scrollbar-color: hsl(220 10% 70% / 0.5) transparent;
+  }
+}
+
+@layer utilities {
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' fill='black'/%3E%3Cg fill-opacity='0.05'%3E%3Ccircle cx='3' cy='3' r='1' fill='white'/%3E%3C/g%3E%3C/svg%3E");
+  }
+}

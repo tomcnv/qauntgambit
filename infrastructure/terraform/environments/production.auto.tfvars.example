@@ -1,0 +1,48 @@
+environment            = "production"
+aws_region             = "ap-southeast-1"
+root_domain            = "quantgambit.com"
+manage_route53_records = false
+
+# Optional operator settings
+# key_name          = "quantgambit-prod"
+# ssh_ingress_cidrs = ["203.0.113.10/32"]
+# alerts_email      = "ops@quantgambit.com"
+
+# App/runtime secrets
+copilot_llm_provider = "openai"
+copilot_llm_api_key  = "replace-me"
+copilot_llm_base_url = "https://api.deepseek.com/v1"
+
+# Set this to the exact production model identifier you intend to use.
+# If your account exposes a DeepSeek V4-compatible deployment name, put it here.
+copilot_llm_model = "replace-with-your-production-model"
+
+# Optional: manage the Cloudflare origin certificate in Secrets Manager so deploy.sh
+# can reinstall TLS automatically on rebuilds or redeploys.
+# manage_cloudflare_origin_secret   = true
+# cloudflare_origin_certificate_pem = <<-PEM
+# -----BEGIN CERTIFICATE-----
+# replace-me
+# -----END CERTIFICATE-----
+# PEM
+# cloudflare_origin_private_key_pem = <<-PEM
+# -----BEGIN PRIVATE KEY-----
+# replace-me
+# -----END PRIVATE KEY-----
+# PEM
+
+# Optional explicit secrets. Leave unset to let Terraform generate them.
+# platform_db_password = "replace-me"
+# bot_db_password      = "replace-me"
+# jwt_secret           = "replace-me"
+
+# Optional IAM overrides if your runtime secrets live outside the defaults.
+# secretsmanager_secret_arns = [
+#   "arn:aws:secretsmanager:ap-southeast-1:123456789012:secret:deeptrader/prod/*",
+# ]
+# ssm_parameter_arns = [
+#   "arn:aws:ssm:ap-southeast-1:123456789012:parameter/quantgambit/production/*",
+# ]
+# kms_key_arns = [
+#   "arn:aws:kms:ap-southeast-1:123456789012:key/replace-me",
+# ]

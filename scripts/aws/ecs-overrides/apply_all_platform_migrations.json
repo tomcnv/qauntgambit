@@ -1,0 +1,13 @@
+{
+  "containerOverrides": [
+    {
+      "name": "core-api",
+      "command": [
+        "bash",
+        "-lc",
+        "cd /app/deeptrader-backend && ./run_all_migrations.sh"
+      ]
+    }
+  ]
+}
+

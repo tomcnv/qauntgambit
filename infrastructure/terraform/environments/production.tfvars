@@ -1,0 +1,15 @@
+environment                = "production"
+aws_region                 = "ap-southeast-1"
+root_domain                = "quantgambit.com"
+instance_type              = "m7i-flex.2xlarge"
+root_volume_size_gb        = 250
+root_volume_iops           = 6000
+root_volume_throughput     = 250
+enable_detailed_monitoring = true
+create_route53_zone        = false
+manage_route53_records     = false
+# existing_route53_zone_id = "Z1234567890"
+# manage_route53_records   = true
+# key_name                = "quantgambit-prod"
+# ssh_ingress_cidrs       = ["203.0.113.10/32"]
+# alerts_email            = "ops@quantgambit.com"

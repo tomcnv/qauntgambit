@@ -1,0 +1,519 @@
+{
+  "optimal_ev_min": 0.14,
+  "knee_point": null,
+  "trading_days": 1.0,
+  "total_trades": 20,
+  "recommendation_reason": "Optimal by Sortino ratio (inf)",
+  "metrics": [
+    {
+      "threshold": 0.0,
+      "trades_per_day": 18.0,
+      "win_rate": 0.8333333333333334,
+      "sharpe_ratio": 1.0866215528729137,
+      "sortino_ratio": 3.733680500237232,
+      "max_drawdown_bps": 12.399999999999999,
+      "profit_factor": 10.461538461538462,
+      "cvar_95": -12.4
+    },
+    {
+      "threshold": 0.01,
+      "trades_per_day": 18.0,
+      "win_rate": 0.8333333333333334,
+      "sharpe_ratio": 1.0866215528729137,
+      "sortino_ratio": 3.733680500237232,
+      "max_drawdown_bps": 12.399999999999999,
+      "profit_factor": 10.461538461538462,
+      "cvar_95": -12.4
+    },
+    {
+      "threshold": 0.02,
+      "trades_per_day": 17.0,
+      "win_rate": 0.8823529411764706,
+      "sharpe_ratio": 1.3453456831123547,
+      "sortino_ratio": 6.200159815148896,
+      "max_drawdown_bps": 8.2,
+      "profit_factor": 19.16778523489933,
+      "cvar_95": -8.2
+    },
+    {
+      "threshold": 0.03,
+      "trades_per_day": 17.0,
+      "win_rate": 0.8823529411764706,
+      "sharpe_ratio": 1.3453456831123547,
+      "sortino_ratio": 6.200159815148896,
+      "max_drawdown_bps": 8.2,
+      "profit_factor": 19.16778523489933,
+      "cvar_95": -8.2
+    },
+    {
+      "threshold": 0.04,
+      "trades_per_day": 17.0,
+      "win_rate": 0.8823529411764706,
+      "sharpe_ratio": 1.3453456831123547,
+      "sortino_ratio": 6.200159815148896,
+      "max_drawdown_bps": 8.2,
+      "profit_factor": 19.16778523489933,
+      "cvar_95": -8.2
+    },
+    {
+      "threshold": 0.05,
+      "trades_per_day": 17.0,
+      "win_rate": 0.8823529411764706,
+      "sharpe_ratio": 1.3453456831123547,
+      "sortino_ratio": 6.200159815148896,
+      "max_drawdown_bps": 8.2,
+      "profit_factor": 19.16778523489933,
+      "cvar_95": -8.2
+    },
+    {
+      "threshold": 0.06,
+      "trades_per_day": 16.0,
+      "win_rate": 0.9375,
+      "sharpe_ratio": 1.6177251104410553,
+      "sortino_ratio": 8.457317073170735,
+      "max_drawdown_bps": 8.2,
+      "profit_factor": 34.82926829268293,
+      "cvar_95": -8.2
+    },
+    {
+      "threshold": 0.07,
+      "trades_per_day": 16.0,
+      "win_rate": 0.9375,
+      "sharpe_ratio": 1.6177251104410553,
+      "sortino_ratio": 8.457317073170735,
+      "max_drawdown_bps": 8.2,
+      "profit_factor": 34.82926829268293,
+      "cvar_95": -8.2
+    },
+    {
+      "threshold": 0.08,
+      "trades_per_day": 15.0,
+      "win_rate": 0.9333333333333333,
+      "sharpe_ratio": 1.7124509754924295,
+      "sortino_ratio": 8.56779486587836,
+      "max_drawdown_bps": 8.2,
+      "profit_factor": 34.182926829268304,
+      "cvar_95": -8.2
+    },
+    {
+      "threshold": 0.09,
+      "trades_per_day": 15.0,
+      "win_rate": 0.9333333333333333,
+      "sharpe_ratio": 1.7124509754924295,
+      "sortino_ratio": 8.56779486587836,
+      "max_drawdown_bps": 8.2,
+      "profit_factor": 34.182926829268304,
+      "cvar_95": -8.2
+    },
+    {
+      "threshold": 0.1,
+      "trades_per_day": 14.0,
+      "win_rate": 0.9285714285714286,
+      "sharpe_ratio": 1.7953975320227442,
+      "sortino_ratio": 8.633841827146492,
+      "max_drawdown_bps": 8.2,
+      "profit_factor": 33.304878048780495,
+      "cvar_95": -8.2
+    },
+    {
+      "threshold": 0.11,
+      "trades_per_day": 14.0,
+      "win_rate": 0.9285714285714286,
+      "sharpe_ratio": 1.7953975320227442,
+      "sortino_ratio": 8.633841827146492,
+      "max_drawdown_bps": 8.2,
+      "profit_factor": 33.304878048780495,
+      "cvar_95": -8.2
+    },
+    {
+      "threshold": 0.12,
+      "trades_per_day": 14.0,
+      "win_rate": 0.9285714285714286,
+      "sharpe_ratio": 1.7953975320227442,
+      "sortino_ratio": 8.633841827146492,
+      "max_drawdown_bps": 8.2,
+      "profit_factor": 33.304878048780495,
+      "cvar_95": -8.2
+    },
+    {
+      "threshold": 0.13,
+      "trades_per_day": 14.0,
+      "win_rate": 0.9285714285714286,
+      "sharpe_ratio": 1.7953975320227442,
+      "sortino_ratio": 8.633841827146492,
+      "max_drawdown_bps": 8.2,
+      "profit_factor": 33.304878048780495,
+      "cvar_95": -8.2
+    },
+    {
+      "threshold": 0.14,
+      "trades_per_day": 13.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 2.7425070174677697,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 9.8
+    },
+    {
+      "threshold": 0.15,
+      "trades_per_day": 13.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 2.7425070174677697,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 9.8
+    },
+    {
+      "threshold": 0.16,
+      "trades_per_day": 12.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 3.0361778846705185,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 11.2
+    },
+    {
+      "threshold": 0.17,
+      "trades_per_day": 12.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 3.0361778846705185,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 11.2
+    },
+    {
+      "threshold": 0.18,
+      "trades_per_day": 12.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 3.0361778846705185,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 11.2
+    },
+    {
+      "threshold": 0.19,
+      "trades_per_day": 12.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 3.0361778846705185,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 11.2
+    },
+    {
+      "threshold": 0.2,
+      "trades_per_day": 11.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 3.242058885432628,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 11.2
+    },
+    {
+      "threshold": 0.21,
+      "trades_per_day": 11.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 3.242058885432628,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 11.2
+    },
+    {
+      "threshold": 0.22,
+      "trades_per_day": 10.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 3.8037269091234007,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 15.5
+    },
+    {
+      "threshold": 0.23,
+      "trades_per_day": 10.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 3.8037269091234007,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 15.5
+    },
+    {
+      "threshold": 0.24,
+      "trades_per_day": 10.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 3.8037269091234007,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 15.5
+    },
+    {
+      "threshold": 0.25,
+      "trades_per_day": 10.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 3.8037269091234007,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 15.5
+    },
+    {
+      "threshold": 0.26,
+      "trades_per_day": 10.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 3.8037269091234007,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 15.5
+    },
+    {
+      "threshold": 0.27,
+      "trades_per_day": 10.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 3.8037269091234007,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 15.5
+    },
+    {
+      "threshold": 0.28,
+      "trades_per_day": 9.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 4.188302444955139,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 16.3
+    },
+    {
+      "threshold": 0.29,
+      "trades_per_day": 9.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 4.188302444955139,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 16.3
+    },
+    {
+      "threshold": 0.3,
+      "trades_per_day": 9.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 4.188302444955139,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 16.3
+    },
+    {
+      "threshold": 0.31,
+      "trades_per_day": 9.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 4.188302444955139,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 16.3
+    },
+    {
+      "threshold": 0.32,
+      "trades_per_day": 8.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 4.784007533350451,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 18.7
+    },
+    {
+      "threshold": 0.33,
+      "trades_per_day": 8.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 4.784007533350451,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 18.7
+    },
+    {
+      "threshold": 0.34,
+      "trades_per_day": 7.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 5.382112770331224,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 19.6
+    },
+    {
+      "threshold": 0.35,
+      "trades_per_day": 7.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 5.382112770331224,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 19.6
+    },
+    {
+      "threshold": 0.36,
+      "trades_per_day": 6.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 6.498798125957243,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 22.1
+    },
+    {
+      "threshold": 0.37,
+      "trades_per_day": 6.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 6.498798125957243,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 22.1
+    },
+    {
+      "threshold": 0.38,
+      "trades_per_day": 6.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 6.498798125957243,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 22.1
+    },
+    {
+      "threshold": 0.39,
+      "trades_per_day": 6.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 6.498798125957243,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 22.1
+    },
+    {
+      "threshold": 0.4,
+      "trades_per_day": 5.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 6.570835644104152,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 22.1
+    },
+    {
+      "threshold": 0.41,
+      "trades_per_day": 5.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 6.570835644104152,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 22.1
+    },
+    {
+      "threshold": 0.42,
+      "trades_per_day": 4.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 9.775869857012644,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 26.8
+    },
+    {
+      "threshold": 0.43,
+      "trades_per_day": 4.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 9.775869857012644,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 26.8
+    },
+    {
+      "threshold": 0.44,
+      "trades_per_day": 3.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 12.290139636939113,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 28.9
+    },
+    {
+      "threshold": 0.45,
+      "trades_per_day": 3.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 12.290139636939113,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 28.9
+    },
+    {
+      "threshold": 0.46,
+      "trades_per_day": 3.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 12.290139636939113,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 28.9
+    },
+    {
+      "threshold": 0.47,
+      "trades_per_day": 3.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 12.290139636939113,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 28.9
+    },
+    {
+      "threshold": 0.48,
+      "trades_per_day": 2.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 17.526315789473664,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 31.4
+    },
+    {
+      "threshold": 0.49,
+      "trades_per_day": 2.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 17.526315789473664,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 31.4
+    },
+    {
+      "threshold": 0.5,
+      "trades_per_day": 2.0,
+      "win_rate": 1.0,
+      "sharpe_ratio": 17.526315789473664,
+      "sortino_ratio": Infinity,
+      "max_drawdown_bps": 0.0,
+      "profit_factor": Infinity,
+      "cvar_95": 31.4
+    }
+  ]
+}

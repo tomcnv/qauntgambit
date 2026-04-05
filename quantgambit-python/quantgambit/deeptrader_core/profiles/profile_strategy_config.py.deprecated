@@ -1,0 +1,1768 @@
+"""Profile Strategy Configuration - Maps profiles to strategies and parameters
+
+This is the routing table: profile_id -> enabled strategies + params
+
+V1: Hardcoded in Python for fast iteration
+V2 (future): Load from database for runtime configuration
+
+Initial profiles:
+1. up_above_normal_us_normal: Uptrend above value -> SHORT only
+2. down_below_normal_us_normal: Downtrend below value -> LONG only  
+3. flat_inside_low_*_off: Flat, inside, low vol -> OFF
+
+FALLBACK STRATEGY (V1):
+- If profile.id has no entry in PROFILE_STRATEGY_CONFIG -> NO TRADE
+- This is intentional: better to skip unknown regimes than spray risk
+- Unconfigured profiles are logged loudly for later analysis
+- Add new profiles as you discover profitable regimes
+"""
+
+from typing import Dict, Any
+
+
+PROFILE_STRATEGY_CONFIG: Dict[str, Dict[str, Any]] = {
+    # Uptrend, above value area -> ULTRA PERMISSIVE FOR TESTING
+    "up_above_normal_us_normal": {
+        "enabled_strategies": ["amt_value_area_rejection_scalp"],
+        "params": {
+            "amt_value_area_rejection_scalp": {
+                "allow_longs": True,   # Allow both for testing
+                "allow_shorts": True,
+                "rotation_threshold": 0.5,  # Very low - easy to trigger
+                "risk_per_trade_pct": 0.1,   # Small size
+                "value_margin": 0.02,        # 2% margin - very wide
+                "stop_loss_pct": 0.01,
+                "max_spread": 0.005,         # Tolerates wide spreads
+            }
+        }
+    },
+    
+    # Downtrend, below value area -> ULTRA PERMISSIVE FOR TESTING
+    "down_below_normal_us_normal": {
+        "enabled_strategies": ["amt_value_area_rejection_scalp"],
+        "params": {
+            "amt_value_area_rejection_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,  # Allow both for testing
+                "rotation_threshold": 0.5,  # Very low - easy to trigger
+                "risk_per_trade_pct": 0.1,   # Small size
+                "value_margin": 0.02,        # 2% margin - very wide
+                "stop_loss_pct": 0.01,
+                "max_spread": 0.005,         # Tolerates wide spreads
+            }
+        }
+    },
+    
+    # ========================================================================
+    # ULTRA-PERMISSIVE TEST PROFILES FOR ABOVE/BELOW VALUE AREA
+    # These will trigger MUCH more easily - for testing the trading system
+    # ========================================================================
+    
+    # TEST: Above value area - ultra permissive (ANY session)
+    "up_above_normal_asia_normal": {
+        "enabled_strategies": ["amt_value_area_rejection_scalp"],
+        "params": {
+            "amt_value_area_rejection_scalp": {
+                "allow_longs": True,  # Allow both sides for testing
+                "allow_shorts": True,
+                "rotation_threshold": 0.5,  # VERY low - almost any rotation works
+                "risk_per_trade_pct": 0.1,   # Tiny size for safe testing
+                "value_margin": 0.02,        # 2% margin - very wide!
+                "stop_loss_pct": 0.01,
+                "max_spread": 0.005,         # Tolerates wide spreads
+            }
+        }
+    },
+    
+    "up_above_normal_europe_normal": {
+        "enabled_strategies": ["amt_value_area_rejection_scalp"],
+        "params": {
+            "amt_value_area_rejection_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "rotation_threshold": 0.5,
+                "risk_per_trade_pct": 0.1,
+                "value_margin": 0.02,
+                "stop_loss_pct": 0.01,
+                "max_spread": 0.005,
+            }
+        }
+    },
+    
+    "up_above_normal_overnight_normal": {
+        "enabled_strategies": ["amt_value_area_rejection_scalp"],
+        "params": {
+            "amt_value_area_rejection_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "rotation_threshold": 0.5,
+                "risk_per_trade_pct": 0.1,
+                "value_margin": 0.02,
+                "stop_loss_pct": 0.01,
+                "max_spread": 0.005,
+            }
+        }
+    },
+    
+    # TEST: Below value area - ultra permissive (ANY session)
+    "down_below_normal_asia_normal": {
+        "enabled_strategies": ["amt_value_area_rejection_scalp"],
+        "params": {
+            "amt_value_area_rejection_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "rotation_threshold": 0.5,
+                "risk_per_trade_pct": 0.1,
+                "value_margin": 0.02,
+                "stop_loss_pct": 0.01,
+                "max_spread": 0.005,
+            }
+        }
+    },
+    
+    "down_below_normal_europe_normal": {
+        "enabled_strategies": ["amt_value_area_rejection_scalp"],
+        "params": {
+            "amt_value_area_rejection_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "rotation_threshold": 0.5,
+                "risk_per_trade_pct": 0.1,
+                "value_margin": 0.02,
+                "stop_loss_pct": 0.01,
+                "max_spread": 0.005,
+            }
+        }
+    },
+    
+    "down_below_normal_overnight_normal": {
+        "enabled_strategies": ["amt_value_area_rejection_scalp"],
+        "params": {
+            "amt_value_area_rejection_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "rotation_threshold": 0.5,
+                "risk_per_trade_pct": 0.1,
+                "value_margin": 0.02,
+                "stop_loss_pct": 0.01,
+                "max_spread": 0.005,
+            }
+        }
+    },
+    
+    # Flat, inside value, low vol -> no trading (all sessions)
+    "flat_inside_low_asia_off": {
+        "enabled_strategies": [],
+        "params": {}
+    },
+    "flat_inside_low_europe_off": {
+        "enabled_strategies": [],
+        "params": {}
+    },
+    "flat_inside_low_us_off": {
+        "enabled_strategies": [],
+        "params": {}
+    },
+    "flat_inside_low_overnight_off": {
+        "enabled_strategies": [],
+        "params": {}
+    },
+    
+    # ========================================================================
+    # TEST PROFILES - Very permissive for system testing
+    # ========================================================================
+    
+    # POC Magnet strategy for inside value area - uptrending
+    "up_inside_normal_us_normal": {
+        "enabled_strategies": ["poc_magnet_scalp"],
+        "params": {
+            "poc_magnet_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "min_distance_from_poc": 0.002,   # 0.2% - closer for more trades
+                "max_distance_from_poc": 0.015,   # 1.5%
+                "rotation_threshold": 1.0,        # Moderate
+                "risk_per_trade_pct": 2.0,  # Updated for testnet        # Small size
+                "stop_loss_pct": 0.008,           # 0.8% stop
+                "take_profit_at_poc": True,
+                "poc_offset_pct": 0.001,          # Exit 0.1% before POC
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    # POC Magnet strategy for inside value area - downtrending
+    "down_inside_normal_us_normal": {
+        "enabled_strategies": ["poc_magnet_scalp"],
+        "params": {
+            "poc_magnet_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "min_distance_from_poc": 0.002,
+                "max_distance_from_poc": 0.015,
+                "rotation_threshold": 1.0,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.008,
+                "take_profit_at_poc": True,
+                "poc_offset_pct": 0.001,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    # POC Magnet strategy for inside value area - flat/ranging
+    "flat_inside_normal_us_normal": {
+        "enabled_strategies": ["poc_magnet_scalp"],
+        "params": {
+            "poc_magnet_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "min_distance_from_poc": 0.003,   # Slightly further for flat
+                "max_distance_from_poc": 0.015,
+                "rotation_threshold": 0.5,        # Lower for flat markets
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.008,
+                "take_profit_at_poc": True,
+                "poc_offset_pct": 0.001,
+                "max_spread": 0.003,              # Wider for flat
+            }
+        }
+    },
+    
+    # Europe session - POC Magnet profiles
+    "up_inside_normal_europe_normal": {
+        "enabled_strategies": ["poc_magnet_scalp"],
+        "params": {
+            "poc_magnet_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "min_distance_from_poc": 0.002,
+                "max_distance_from_poc": 0.015,
+                "rotation_threshold": 1.0,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.008,
+                "take_profit_at_poc": True,
+                "poc_offset_pct": 0.001,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    "down_inside_normal_europe_normal": {
+        "enabled_strategies": ["poc_magnet_scalp"],
+        "params": {
+            "poc_magnet_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "min_distance_from_poc": 0.002,
+                "max_distance_from_poc": 0.015,
+                "rotation_threshold": 1.0,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.008,
+                "take_profit_at_poc": True,
+                "poc_offset_pct": 0.001,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    "flat_inside_normal_europe_normal": {
+        "enabled_strategies": ["poc_magnet_scalp"],
+        "params": {
+            "poc_magnet_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "min_distance_from_poc": 0.003,
+                "max_distance_from_poc": 0.015,
+                "rotation_threshold": 0.5,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.008,
+                "take_profit_at_poc": True,
+                "poc_offset_pct": 0.001,
+                "max_spread": 0.003,
+            }
+        }
+    },
+    
+    # Asia session test profiles
+    # Asia session - POC Magnet profiles
+    "up_inside_normal_asia_normal": {
+        "enabled_strategies": ["poc_magnet_scalp"],
+        "params": {
+            "poc_magnet_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "min_distance_from_poc": 0.003,   # Slightly wider for lower liquidity
+                "max_distance_from_poc": 0.02,
+                "rotation_threshold": 1.5,        # Higher threshold for Asia
+                "risk_per_trade_pct": 2.0,  # Updated for testnet        # Smaller size for Asia
+                "stop_loss_pct": 0.01,            # Wider stop
+                "take_profit_at_poc": True,
+                "poc_offset_pct": 0.0015,
+                "max_spread": 0.003,              # Tolerate wider spreads
+            }
+        }
+    },
+    
+    "down_inside_normal_asia_normal": {
+        "enabled_strategies": ["poc_magnet_scalp"],
+        "params": {
+            "poc_magnet_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "min_distance_from_poc": 0.003,
+                "max_distance_from_poc": 0.02,
+                "rotation_threshold": 1.5,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.01,
+                "take_profit_at_poc": True,
+                "poc_offset_pct": 0.0015,
+                "max_spread": 0.003,
+            }
+        }
+    },
+    
+    "flat_inside_normal_asia_normal": {
+        "enabled_strategies": ["poc_magnet_scalp"],
+        "params": {
+            "poc_magnet_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "min_distance_from_poc": 0.004,
+                "max_distance_from_poc": 0.02,
+                "rotation_threshold": 1.0,        # Lower for flat
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.01,
+                "take_profit_at_poc": True,
+                "poc_offset_pct": 0.0015,
+                "max_spread": 0.004,
+            }
+        }
+    },
+}
+
+
+# Conservative default config (for future Phase 2 fallback)
+# Currently NOT used as fallback - unconfigured profiles = no trade
+# Kept here for reference and potential Phase 2 implementation
+DEFAULT_CONSERVATIVE_CONFIG = {
+    "enabled_strategies": ["amt_value_area_rejection_scalp"],
+    "params": {
+        "amt_value_area_rejection_scalp": {
+            "allow_longs": True,
+            "allow_shorts": True,
+            "rotation_threshold": 5.0,      # Higher threshold = more selective
+            "risk_per_trade_pct": 0.25,     # Lower risk = more conservative
+            "value_margin": 0.0008,         # Tighter margin
+            "stop_loss_pct": 0.005,
+            "max_spread": 0.0008,           # Tighter spread requirement
+        }
+    }
+}
+
+# Re-open PROFILE_STRATEGY_CONFIG to add Phase 2 profiles
+PROFILE_STRATEGY_CONFIG.update({
+    # ═══════════════════════════════════════════════════════════════
+    # BREAKOUT SCALP STRATEGY PROFILES (NEW - Phase 2)
+    # ═══════════════════════════════════════════════════════════════
+    
+    # Uptrend, above value area, normal vol -> LONG BREAKOUTS (test mode)
+    "up_above_normal_us_normal_breakout": {
+        "enabled_strategies": ["breakout_scalp"],
+        "params": {
+            "breakout_scalp": {
+                "allow_longs": True,
+                "allow_shorts": False,  # Uptrend -> long breakouts only
+                "rotation_threshold": 5.0,  # Permissive for testing
+                "risk_per_trade_pct": 0.15,  # Small test size
+                "breakout_confirmation_pct": 0.001,  # 0.1% beyond VAH = breakout
+                "stop_loss_pct": 1.0,
+                "take_profit_pct": 0.6,
+                "max_spread": 0.004,
+                "min_atr_ratio": 0.8,  # Low threshold for testing
+            }
+        }
+    },
+    
+    # Downtrend, below value area, normal vol -> SHORT BREAKOUTS (test mode)
+    "down_below_normal_us_normal_breakout": {
+        "enabled_strategies": ["breakout_scalp"],
+        "params": {
+            "breakout_scalp": {
+                "allow_longs": False,
+                "allow_shorts": True,  # Downtrend -> short breakouts only
+                "rotation_threshold": 5.0,  # Permissive for testing
+                "risk_per_trade_pct": 0.15,  # Small test size
+                "breakout_confirmation_pct": 0.001,  # 0.1% beyond VAL = breakout
+                "stop_loss_pct": 1.0,
+                "take_profit_pct": 0.6,
+                "max_spread": 0.004,
+                "min_atr_ratio": 0.8,  # Low threshold for testing
+            }
+        }
+    },
+    
+    # High volatility breakouts - both directions (ultra permissive test)
+    "up_above_high_us_normal_breakout": {
+        "enabled_strategies": ["breakout_scalp"],
+        "params": {
+            "breakout_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,  # Test both in high vol
+                "rotation_threshold": 3.0,  # Very permissive
+                "risk_per_trade_pct": 0.2,
+                "breakout_confirmation_pct": 0.0015,  # 0.15% confirmation
+                "stop_loss_pct": 1.2,  # Wider for high vol
+                "take_profit_pct": 0.8,
+                "max_spread": 0.005,
+                "min_atr_ratio": 1.2,  # Requires high ATR
+            }
+        }
+    },
+    
+    "down_below_high_us_normal_breakout": {
+        "enabled_strategies": ["breakout_scalp"],
+        "params": {
+            "breakout_scalp": {
+                "allow_longs": True,  # Test both in high vol
+                "allow_shorts": True,
+                "rotation_threshold": 3.0,  # Very permissive
+                "risk_per_trade_pct": 0.2,
+                "breakout_confirmation_pct": 0.0015,  # 0.15% confirmation
+                "stop_loss_pct": 1.2,  # Wider for high vol
+                "take_profit_pct": 0.8,
+                "max_spread": 0.005,
+                "min_atr_ratio": 1.2,  # Requires high ATR
+            }
+        }
+    },
+    
+    # Europe session breakouts (high liquidity, good for breakouts)
+    "up_above_normal_europe_normal_breakout": {
+        "enabled_strategies": ["breakout_scalp"],
+        "params": {
+            "breakout_scalp": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "rotation_threshold": 6.0,
+                "risk_per_trade_pct": 0.15,
+                "breakout_confirmation_pct": 0.001,
+                "stop_loss_pct": 0.9,
+                "take_profit_pct": 0.7,
+                "max_spread": 0.003,
+                "min_atr_ratio": 0.9,
+            }
+        }
+    },
+    
+    "down_below_normal_europe_normal_breakout": {
+        "enabled_strategies": ["breakout_scalp"],
+        "params": {
+            "breakout_scalp": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "rotation_threshold": 6.0,
+                "risk_per_trade_pct": 0.15,
+                "breakout_confirmation_pct": 0.001,
+                "stop_loss_pct": 0.9,
+                "take_profit_pct": 0.7,
+                "max_spread": 0.003,
+                "min_atr_ratio": 0.9,
+            }
+        }
+    },
+    
+    # ========================================================================
+    # MEAN REVERSION FADE STRATEGY - Flat markets, extended from POC
+    # ========================================================================
+    
+    # Flat, above POC, low volatility - fade down to POC
+    "flat_above_low_us_normal": {
+        "enabled_strategies": ["mean_reversion_fade"],
+        "params": {
+            "mean_reversion_fade": {
+                "allow_longs": False,  # Only short (price above POC)
+                "allow_shorts": True,
+                "min_distance_from_poc_pct": 0.015,  # 1.5% from POC
+                "rotation_reversal_threshold": 0.0,  # Crossing zero
+                "max_atr_ratio": 1.0,  # Calm market
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.004,  # Tight 0.4%
+                "take_profit_target_pct": 0.0,  # Target POC
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    "flat_above_low_europe_normal": {
+        "enabled_strategies": ["mean_reversion_fade"],
+        "params": {
+            "mean_reversion_fade": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "min_distance_from_poc_pct": 0.015,
+                "rotation_reversal_threshold": 0.0,
+                "max_atr_ratio": 1.0,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.004,
+                "take_profit_target_pct": 0.0,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    # Flat, below POC, low volatility - fade up to POC
+    "flat_below_low_us_normal": {
+        "enabled_strategies": ["mean_reversion_fade"],
+        "params": {
+            "mean_reversion_fade": {
+                "allow_longs": True,  # Only long (price below POC)
+                "allow_shorts": False,
+                "min_distance_from_poc_pct": 0.015,
+                "rotation_reversal_threshold": 0.0,
+                "max_atr_ratio": 1.0,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.004,
+                "take_profit_target_pct": 0.0,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    "flat_below_low_europe_normal": {
+        "enabled_strategies": ["mean_reversion_fade"],
+        "params": {
+            "mean_reversion_fade": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "min_distance_from_poc_pct": 0.015,
+                "rotation_reversal_threshold": 0.0,
+                "max_atr_ratio": 1.0,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.004,
+                "take_profit_target_pct": 0.0,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    # Normal volatility versions
+    "flat_above_normal_us_normal": {
+        "enabled_strategies": ["mean_reversion_fade"],
+        "params": {
+            "mean_reversion_fade": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "min_distance_from_poc_pct": 0.020,  # 2% from POC (normal vol)
+                "rotation_reversal_threshold": 0.0,
+                "max_atr_ratio": 1.2,  # Allow slightly higher vol
+                "risk_per_trade_pct": 0.7,
+                "stop_loss_pct": 0.005,  # Slightly wider
+                "take_profit_target_pct": 0.0,
+                "max_spread": 0.0025,
+            }
+        }
+    },
+    
+    "flat_below_normal_europe_normal": {
+        "enabled_strategies": ["mean_reversion_fade"],
+        "params": {
+            "mean_reversion_fade": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "min_distance_from_poc_pct": 0.020,
+                "rotation_reversal_threshold": 0.0,
+                "max_atr_ratio": 1.2,
+                "risk_per_trade_pct": 0.7,
+                "stop_loss_pct": 0.005,
+                "take_profit_target_pct": 0.0,
+                "max_spread": 0.0025,
+            }
+        }
+    },
+    
+    # Test profile - ultra permissive
+    "flat_above_low_test_permissive": {
+        "enabled_strategies": ["mean_reversion_fade"],
+        "params": {
+            "mean_reversion_fade": {
+                "allow_longs": True,  # Allow both for testing
+                "allow_shorts": True,
+                "min_distance_from_poc_pct": 0.005,  # Only 0.5% required
+                "rotation_reversal_threshold": 0.0,
+                "max_atr_ratio": 2.0,  # Accept high vol too
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.006,
+                "take_profit_target_pct": 0.0,
+                "max_spread": 0.005,  # Wide spread tolerance
+            }
+        }
+    },
+    
+    # ========================================================================
+    # TREND PULLBACK STRATEGY - Enter trends on pullbacks to value area
+    # ========================================================================
+    
+    # Uptrend, pullback inside value area
+    "up_inside_normal_us_normal": {
+        "enabled_strategies": ["trend_pullback"],
+        "params": {
+            "trend_pullback": {
+                "allow_longs": True,  # Long in uptrend
+                "allow_shorts": False,
+                "min_ema_spread_pct": 0.005,  # 0.5% EMA spread
+                "min_rotation_factor": 5.0,
+                "poc_entry_threshold": 0.002,  # 0.2% from POC
+                "risk_per_trade_pct": 1.5,  # Larger position
+                "stop_loss_pct": 0.006,  # 0.6%
+                "take_profit_target_pct": 0.015,  # 1.5% target
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    "up_inside_normal_europe_normal": {
+        "enabled_strategies": ["trend_pullback"],
+        "params": {
+            "trend_pullback": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "min_ema_spread_pct": 0.005,
+                "min_rotation_factor": 5.0,
+                "poc_entry_threshold": 0.002,
+                "risk_per_trade_pct": 1.5,
+                "stop_loss_pct": 0.006,
+                "take_profit_target_pct": 0.015,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    # Downtrend, pullback inside value area
+    "down_inside_normal_us_normal": {
+        "enabled_strategies": ["trend_pullback"],
+        "params": {
+            "trend_pullback": {
+                "allow_longs": False,
+                "allow_shorts": True,  # Short in downtrend
+                "min_ema_spread_pct": 0.005,
+                "min_rotation_factor": 5.0,
+                "poc_entry_threshold": 0.002,
+                "risk_per_trade_pct": 1.5,
+                "stop_loss_pct": 0.006,
+                "take_profit_target_pct": 0.015,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    "down_inside_normal_europe_normal": {
+        "enabled_strategies": ["trend_pullback"],
+        "params": {
+            "trend_pullback": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "min_ema_spread_pct": 0.005,
+                "min_rotation_factor": 5.0,
+                "poc_entry_threshold": 0.002,
+                "risk_per_trade_pct": 1.5,
+                "stop_loss_pct": 0.006,
+                "take_profit_target_pct": 0.015,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    # High volatility uptrend pullbacks
+    "up_inside_high_us_normal": {
+        "enabled_strategies": ["trend_pullback"],
+        "params": {
+            "trend_pullback": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "min_ema_spread_pct": 0.008,  # Stronger trend required
+                "min_rotation_factor": 6.0,  # Higher rotation
+                "poc_entry_threshold": 0.003,  # Wider entry zone
+                "risk_per_trade_pct": 2.0,  # Larger in high vol
+                "stop_loss_pct": 0.008,  # Wider stop
+                "take_profit_target_pct": 0.020,  # Bigger target
+                "max_spread": 0.003,
+            }
+        }
+    },
+    
+    # High volatility downtrend pullbacks
+    "down_inside_high_europe_normal": {
+        "enabled_strategies": ["trend_pullback"],
+        "params": {
+            "trend_pullback": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "min_ema_spread_pct": 0.008,
+                "min_rotation_factor": 6.0,
+                "poc_entry_threshold": 0.003,
+                "risk_per_trade_pct": 2.0,
+                "stop_loss_pct": 0.008,
+                "take_profit_target_pct": 0.020,
+                "max_spread": 0.003,
+            }
+        }
+    },
+    
+    # Test profile - ultra permissive
+    "up_inside_test_permissive": {
+        "enabled_strategies": ["trend_pullback"],
+        "params": {
+            "trend_pullback": {
+                "allow_longs": True,
+                "allow_shorts": True,  # Test both
+                "min_ema_spread_pct": 0.002,  # Very low
+                "min_rotation_factor": 2.0,  # Very low
+                "poc_entry_threshold": 0.005,  # Wide entry zone
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.008,
+                "take_profit_target_pct": 0.010,
+                "max_spread": 0.005,
+            }
+        }
+    },
+    
+    # ========================================================================
+    # CHOP ZONE AVOID STRATEGY - Defensive, no trades
+    # ========================================================================
+    
+    # Flat, inside, low volatility - chop zone (all sessions)
+    "flat_inside_low_us_normal": {
+        "enabled_strategies": ["chop_zone_avoid"],
+        "params": {
+            "chop_zone_avoid": {}  # No parameters needed
+        }
+    },
+    
+    "flat_inside_low_europe_normal": {
+        "enabled_strategies": ["chop_zone_avoid"],
+        "params": {
+            "chop_zone_avoid": {}
+        }
+    },
+    
+    "flat_inside_low_asia_normal": {
+        "enabled_strategies": ["chop_zone_avoid"],
+        "params": {
+            "chop_zone_avoid": {}
+        }
+    },
+    
+    "flat_inside_low_overnight_normal": {
+        "enabled_strategies": ["chop_zone_avoid"],
+        "params": {
+            "chop_zone_avoid": {}
+        }
+    },
+    
+    # ========================================================================
+    # OPENING RANGE BREAKOUT STRATEGY - Session-based momentum
+    # ========================================================================
+    
+    # US session breakouts
+    "up_above_normal_us_normal_orb": {
+        "enabled_strategies": ["opening_range_breakout"],
+        "params": {
+            "opening_range_breakout": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "min_rotation_factor": 7.0,  # Strong breakout
+                "breakout_confirmation_pct": 0.001,  # 0.1%
+                "risk_per_trade_pct": 1.0,
+                "stop_loss_pct": 0.008,  # 0.8%
+                "reward_ratio": 2.0,  # 1:2
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    "down_below_normal_us_normal_orb": {
+        "enabled_strategies": ["opening_range_breakout"],
+        "params": {
+            "opening_range_breakout": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "min_rotation_factor": 7.0,
+                "breakout_confirmation_pct": 0.001,
+                "risk_per_trade_pct": 1.0,
+                "stop_loss_pct": 0.008,
+                "reward_ratio": 2.0,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    # Asia session breakouts
+    "up_above_normal_asia_normal_orb": {
+        "enabled_strategies": ["opening_range_breakout"],
+        "params": {
+            "opening_range_breakout": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "min_rotation_factor": 6.0,  # Slightly easier (lower liquidity)
+                "breakout_confirmation_pct": 0.0012,  # 0.12%
+                "risk_per_trade_pct": 0.8,  # Smaller size
+                "stop_loss_pct": 0.007,
+                "reward_ratio": 2.5,  # Higher reward needed
+                "max_spread": 0.0025,
+            }
+        }
+    },
+    
+    "down_below_normal_asia_normal_orb": {
+        "enabled_strategies": ["opening_range_breakout"],
+        "params": {
+            "opening_range_breakout": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "min_rotation_factor": 6.0,
+                "breakout_confirmation_pct": 0.0012,
+                "risk_per_trade_pct": 0.8,
+                "stop_loss_pct": 0.007,
+                "reward_ratio": 2.5,
+                "max_spread": 0.0025,
+            }
+        }
+    },
+    
+    # Test profile - ultra permissive
+    "up_above_test_us_permissive_orb": {
+        "enabled_strategies": ["opening_range_breakout"],
+        "params": {
+            "opening_range_breakout": {
+                "allow_longs": True,
+                "allow_shorts": True,  # Both sides
+                "min_rotation_factor": 3.0,  # Very low
+                "breakout_confirmation_pct": 0.0005,  # 0.05%
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.010,
+                "reward_ratio": 1.5,
+                "max_spread": 0.005,
+            }
+        }
+    },
+    
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 2B: SESSION-SPECIFIC STRATEGIES
+    # ═══════════════════════════════════════════════════════════════
+    
+    # ──────────────────────────────────────────────────────────────
+    # ASIA RANGE SCALP PROFILES (asia session, flat, inside)
+    # ──────────────────────────────────────────────────────────────
+    
+    "flat_inside_low_asia_normal": {
+        "enabled_strategies": ["asia_range_scalp"],
+        "params": {
+            "asia_range_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "min_distance_from_val": 0.002,  # 0.2%
+                "max_distance_from_val": 0.008,  # 0.8%
+                "rotation_threshold": 3.0,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.0025,  # 0.25%
+                "take_profit_pct": 0.003,  # 0.3%
+                "max_spread": 0.0005,
+            }
+        }
+    },
+    
+    "flat_inside_normal_asia_normal": {
+        "enabled_strategies": ["asia_range_scalp"],
+        "params": {
+            "asia_range_scalp": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "min_distance_from_val": 0.0025,
+                "max_distance_from_val": 0.010,
+                "rotation_threshold": 4.0,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.003,
+                "take_profit_pct": 0.004,
+                "max_spread": 0.0006,
+            }
+        }
+    },
+    
+    "up_inside_normal_asia_normal": {
+        "enabled_strategies": ["asia_range_scalp"],
+        "params": {
+            "asia_range_scalp": {
+                "allow_longs": True,
+                "allow_shorts": False,  # Only long in uptrend
+                "min_distance_from_val": 0.002,
+                "max_distance_from_val": 0.008,
+                "rotation_threshold": 3.5,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.0025,
+                "take_profit_pct": 0.004,
+                "max_spread": 0.0006,
+            }
+        }
+    },
+    
+    "down_inside_normal_asia_normal": {
+        "enabled_strategies": ["asia_range_scalp"],
+        "params": {
+            "asia_range_scalp": {
+                "allow_longs": False,
+                "allow_shorts": True,  # Only short in downtrend
+                "min_distance_from_val": 0.002,
+                "max_distance_from_val": 0.008,
+                "rotation_threshold": 3.5,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.0025,
+                "take_profit_pct": 0.004,
+                "max_spread": 0.0006,
+            }
+        }
+    },
+    
+    # ──────────────────────────────────────────────────────────────
+    # EUROPE OPEN VOLATILITY PROFILES (europe session, first hour)
+    # ──────────────────────────────────────────────────────────────
+    
+    "up_above_normal_europe_normal": {
+        "enabled_strategies": ["europe_open_vol"],
+        "params": {
+            "europe_open_vol": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "min_atr_ratio": 1.2,
+                "min_trades_per_sec": 3.0,
+                "rotation_threshold": 5.0,
+                "risk_per_trade_pct": 1.0,
+                "stop_loss_pct": 0.006,
+                "take_profit_pct": 0.015,
+                "max_spread": 0.001,
+            }
+        }
+    },
+    
+    "down_below_normal_europe_normal": {
+        "enabled_strategies": ["europe_open_vol"],
+        "params": {
+            "europe_open_vol": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "min_atr_ratio": 1.2,
+                "min_trades_per_sec": 3.0,
+                "rotation_threshold": 5.0,
+                "risk_per_trade_pct": 1.0,
+                "stop_loss_pct": 0.006,
+                "take_profit_pct": 0.015,
+                "max_spread": 0.001,
+            }
+        }
+    },
+    
+    "up_above_high_europe_normal": {
+        "enabled_strategies": ["europe_open_vol"],
+        "params": {
+            "europe_open_vol": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "min_atr_ratio": 1.5,  # Higher volatility
+                "min_trades_per_sec": 4.0,  # More volume
+                "rotation_threshold": 7.0,  # Stronger momentum
+                "risk_per_trade_pct": 1.2,
+                "stop_loss_pct": 0.008,
+                "take_profit_pct": 0.020,
+                "max_spread": 0.0015,
+            }
+        }
+    },
+    
+    "down_below_high_europe_normal": {
+        "enabled_strategies": ["europe_open_vol"],
+        "params": {
+            "europe_open_vol": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "min_atr_ratio": 1.5,
+                "min_trades_per_sec": 4.0,
+                "rotation_threshold": 7.0,
+                "risk_per_trade_pct": 1.2,
+                "stop_loss_pct": 0.008,
+                "take_profit_pct": 0.020,
+                "max_spread": 0.0015,
+            }
+        }
+    },
+    
+    # ──────────────────────────────────────────────────────────────
+    # US OPEN MOMENTUM PROFILES (us session, high liquidity)
+    # ──────────────────────────────────────────────────────────────
+    
+    "up_above_normal_us_momentum": {
+        "enabled_strategies": ["us_open_momentum"],
+        "params": {
+            "us_open_momentum": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "extended_window": True,  # 12:00-14:00
+                "min_ema_spread_pct": 0.005,
+                "min_rotation_factor": 7.0,
+                "min_trades_per_sec": 4.0,
+                "risk_per_trade_pct": 1.5,
+                "stop_loss_pct": 0.010,
+                "take_profit_pct": 0.025,
+                "max_spread": 0.0015,
+            }
+        }
+    },
+    
+    "down_below_normal_us_momentum": {
+        "enabled_strategies": ["us_open_momentum"],
+        "params": {
+            "us_open_momentum": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "extended_window": True,
+                "min_ema_spread_pct": 0.005,
+                "min_rotation_factor": 7.0,
+                "min_trades_per_sec": 4.0,
+                "risk_per_trade_pct": 1.5,
+                "stop_loss_pct": 0.010,
+                "take_profit_pct": 0.025,
+                "max_spread": 0.0015,
+            }
+        }
+    },
+    
+    "up_above_high_us_momentum": {
+        "enabled_strategies": ["us_open_momentum"],
+        "params": {
+            "us_open_momentum": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "extended_window": True,
+                "min_ema_spread_pct": 0.008,  # Stronger trend
+                "min_rotation_factor": 9.0,  # Higher momentum
+                "min_trades_per_sec": 5.0,  # Peak liquidity
+                "risk_per_trade_pct": 2.0,  # Larger size
+                "stop_loss_pct": 0.012,
+                "take_profit_pct": 0.030,
+                "max_spread": 0.0020,
+            }
+        }
+    },
+    
+    "down_below_high_us_momentum": {
+        "enabled_strategies": ["us_open_momentum"],
+        "params": {
+            "us_open_momentum": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "extended_window": True,
+                "min_ema_spread_pct": 0.008,
+                "min_rotation_factor": 9.0,
+                "min_trades_per_sec": 5.0,
+                "risk_per_trade_pct": 2.0,
+                "stop_loss_pct": 0.012,
+                "take_profit_pct": 0.030,
+                "max_spread": 0.0020,
+            }
+        }
+    },
+    
+    # Conservative profiles for inside value during US session
+    "up_inside_normal_us_momentum": {
+        "enabled_strategies": ["us_open_momentum"],
+        "params": {
+            "us_open_momentum": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "extended_window": False,  # 13:00-14:00 only
+                "min_ema_spread_pct": 0.006,
+                "min_rotation_factor": 8.0,
+                "min_trades_per_sec": 4.5,
+                "risk_per_trade_pct": 1.2,
+                "stop_loss_pct": 0.009,
+                "take_profit_pct": 0.020,
+                "max_spread": 0.0015,
+            }
+        }
+    },
+    
+    "down_inside_normal_us_momentum": {
+        "enabled_strategies": ["us_open_momentum"],
+        "params": {
+            "us_open_momentum": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "extended_window": False,
+                "min_ema_spread_pct": 0.006,
+                "min_rotation_factor": 8.0,
+                "min_trades_per_sec": 4.5,
+                "risk_per_trade_pct": 1.2,
+                "stop_loss_pct": 0.009,
+                "take_profit_pct": 0.020,
+                "max_spread": 0.0015,
+            }
+        }
+    },
+    
+    # ──────────────────────────────────────────────────────────────
+    # OVERNIGHT THIN MARKET PROFILES (overnight session, conservative)
+    # ──────────────────────────────────────────────────────────────
+    
+    "flat_inside_low_overnight_normal": {
+        "enabled_strategies": ["overnight_thin"],
+        "params": {
+            "overnight_thin": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "rotation_threshold": 8.0,  # High confirmation
+                "min_distance_from_vah": 0.003,
+                "min_distance_from_val": 0.003,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.004,
+                "take_profit_pct": 0.006,
+                "max_spread": 0.002,
+                "require_trend_alignment": True,
+            }
+        }
+    },
+    
+    "up_inside_low_overnight_normal": {
+        "enabled_strategies": ["overnight_thin"],
+        "params": {
+            "overnight_thin": {
+                "allow_longs": True,
+                "allow_shorts": False,  # Only long in uptrend
+                "rotation_threshold": 7.0,
+                "min_distance_from_vah": 0.003,
+                "min_distance_from_val": 0.003,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.004,
+                "take_profit_pct": 0.007,
+                "max_spread": 0.002,
+                "require_trend_alignment": True,
+            }
+        }
+    },
+    
+    "down_inside_low_overnight_normal": {
+        "enabled_strategies": ["overnight_thin"],
+        "params": {
+            "overnight_thin": {
+                "allow_longs": False,
+                "allow_shorts": True,  # Only short in downtrend
+                "rotation_threshold": 7.0,
+                "min_distance_from_vah": 0.003,
+                "min_distance_from_val": 0.003,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "stop_loss_pct": 0.004,
+                "take_profit_pct": 0.007,
+                "max_spread": 0.002,
+                "require_trend_alignment": True,
+            }
+        }
+    },
+    
+    "flat_inside_normal_overnight_normal": {
+        "enabled_strategies": ["overnight_thin"],
+        "params": {
+            "overnight_thin": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "rotation_threshold": 9.0,  # Even higher for normal vol
+                "min_distance_from_vah": 0.004,
+                "min_distance_from_val": 0.004,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet  # Smaller size
+                "stop_loss_pct": 0.005,
+                "take_profit_pct": 0.006,
+                "max_spread": 0.0025,
+                "require_trend_alignment": True,
+            }
+        }
+    },
+
+    # ========================================================================
+    # PHASE 3: VOLATILITY-ADAPTIVE STRATEGIES
+    # ========================================================================
+
+    # --- HIGH VOL BREAKOUT PROFILES ---
+    "up_above_high_us_normal": {
+        "enabled_strategies": ["high_vol_breakout"],
+        "params": {
+            "high_vol_breakout": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "min_atr_ratio": 2.0,
+                "min_volume_spike": 1.5,
+                "breakout_confirmation_pct": 0.002,
+                "min_rotation_factor": 7.0,
+                "stop_loss_pct": 0.015,
+                "take_profit_pct": 0.02,
+                "risk_per_trade_pct": 0.8,
+                "max_spread": 0.005,
+            }
+        }
+    },
+    "down_below_high_us_normal": {
+        "enabled_strategies": ["high_vol_breakout"],
+        "params": {
+            "high_vol_breakout": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "min_atr_ratio": 2.0,
+                "min_volume_spike": 1.5,
+                "breakout_confirmation_pct": 0.002,
+                "min_rotation_factor": 7.0,
+                "stop_loss_pct": 0.015,
+                "take_profit_pct": 0.02,
+                "risk_per_trade_pct": 0.8,
+                "max_spread": 0.005,
+            }
+        }
+    },
+    "up_above_high_europe_normal": {
+        "enabled_strategies": ["high_vol_breakout"],
+        "params": {
+            "high_vol_breakout": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "min_atr_ratio": 2.0,
+                "min_volume_spike": 1.5,
+                "breakout_confirmation_pct": 0.002,
+                "min_rotation_factor": 7.0,
+                "stop_loss_pct": 0.015,
+                "take_profit_pct": 0.02,
+                "risk_per_trade_pct": 0.8,
+                "max_spread": 0.005,
+            }
+        }
+    },
+    "down_below_high_europe_normal": {
+        "enabled_strategies": ["high_vol_breakout"],
+        "params": {
+            "high_vol_breakout": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "min_atr_ratio": 2.0,
+                "min_volume_spike": 1.5,
+                "breakout_confirmation_pct": 0.002,
+                "min_rotation_factor": 7.0,
+                "stop_loss_pct": 0.015,
+                "take_profit_pct": 0.02,
+                "risk_per_trade_pct": 0.8,
+                "max_spread": 0.005,
+            }
+        }
+    },
+    "flat_inside_high_us_normal": {
+        "enabled_strategies": ["high_vol_breakout"],
+        "params": {
+            "high_vol_breakout": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "min_atr_ratio": 2.0,
+                "min_volume_spike": 1.5,
+                "breakout_confirmation_pct": 0.002,
+                "min_rotation_factor": 7.0,
+                "stop_loss_pct": 0.015,
+                "take_profit_pct": 0.02,
+                "risk_per_trade_pct": 0.8,
+                "max_spread": 0.005,
+            }
+        }
+    },
+
+    # --- LOW VOL GRIND PROFILES ---
+    "flat_inside_low_overnight_normal": {
+        "enabled_strategies": ["low_vol_grind"],
+        "params": {
+            "low_vol_grind": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "max_atr_ratio": 0.5,
+                "poc_proximity_pct": 0.0005,
+                "micro_range_pct": 0.003,
+                "stop_loss_pct": 0.0015,
+                "take_profit_pct": 0.004,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "max_spread": 0.0005,
+                "min_trades_per_second": 2.0,
+            }
+        }
+    },
+    "flat_inside_low_asia_normal": {
+        "enabled_strategies": ["low_vol_grind"],
+        "params": {
+            "low_vol_grind": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "max_atr_ratio": 0.5,
+                "poc_proximity_pct": 0.0005,
+                "micro_range_pct": 0.003,
+                "stop_loss_pct": 0.0015,
+                "take_profit_pct": 0.004,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "max_spread": 0.0005,
+                "min_trades_per_second": 2.0,
+            }
+        }
+    },
+    "flat_inside_low_europe_normal": {
+        "enabled_strategies": ["low_vol_grind"],
+        "params": {
+            "low_vol_grind": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "max_atr_ratio": 0.5,
+                "poc_proximity_pct": 0.0005,
+                "micro_range_pct": 0.003,
+                "stop_loss_pct": 0.0015,
+                "take_profit_pct": 0.004,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "max_spread": 0.0005,
+                "min_trades_per_second": 2.0,
+            }
+        }
+    },
+    "up_inside_low_us_normal": {
+        "enabled_strategies": ["low_vol_grind"],
+        "params": {
+            "low_vol_grind": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "max_atr_ratio": 0.5,
+                "poc_proximity_pct": 0.0005,
+                "micro_range_pct": 0.003,
+                "stop_loss_pct": 0.0015,
+                "take_profit_pct": 0.004,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "max_spread": 0.0005,
+                "min_trades_per_second": 2.0,
+            }
+        }
+    },
+
+    # --- VOL EXPANSION PROFILES ---
+    "flat_inside_normal_us_normal": {
+        "enabled_strategies": ["vol_expansion"],
+        "params": {
+            "vol_expansion": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "expansion_threshold": 1.2,
+                "breakout_confirmation_pct": 0.001,
+                "min_rotation_factor": 5.0,
+                "stop_loss_pct": 0.008,
+                "take_profit_pct": 0.015,
+                "risk_per_trade_pct": 2.0,  # Increased for testnet (was 0.6)
+                "max_spread": 0.003,
+            }
+        }
+    },
+    "flat_inside_normal_europe_normal": {
+        "enabled_strategies": ["vol_expansion"],
+        "params": {
+            "vol_expansion": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "expansion_threshold": 1.2,
+                "breakout_confirmation_pct": 0.001,
+                "min_rotation_factor": 5.0,
+                "stop_loss_pct": 0.008,
+                "take_profit_pct": 0.015,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "max_spread": 0.003,
+            }
+        }
+    },
+    "up_inside_normal_us_normal": {
+        "enabled_strategies": ["vol_expansion", "poc_magnet_scalp", "vwap_reversion", "volume_profile_cluster"],
+        "params": {
+            "vol_expansion": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "expansion_threshold": 1.2,
+                "breakout_confirmation_pct": 0.001,
+                "min_rotation_factor": 5.0,
+                "stop_loss_pct": 0.008,
+                "take_profit_pct": 0.015,
+                "risk_per_trade_pct": 2.0,
+                "max_spread": 0.003,
+            },
+            "poc_magnet_scalp": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "poc_distance_threshold": 0.01,
+                "rotation_threshold": 3.0,
+                "risk_per_trade_pct": 2.0,
+                "stop_loss_pct": 0.005,
+                "take_profit_target_pct": 0.008,
+                "max_spread": 0.002,
+            },
+            "vwap_reversion": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "min_deviation_pct": 0.01,
+                "max_deviation_pct": 0.03,
+                "rotation_threshold": 3.0,
+                "stop_loss_pct": 0.008,
+                "take_profit_at_vwap": True,
+                "vwap_offset_pct": 0.002,
+                "risk_per_trade_pct": 2.0,
+                "max_spread": 0.003,
+            },
+            "volume_profile_cluster": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "proximity_to_hvn_pct": 0.005,
+                "rotation_threshold": 5.0,
+                "stop_loss_pct": 0.006,
+                "take_profit_pct": 0.012,
+                "risk_per_trade_pct": 2.0,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    "down_inside_normal_us_normal": {
+        "enabled_strategies": ["vol_expansion"],
+        "params": {
+            "vol_expansion": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "expansion_threshold": 1.2,
+                "breakout_confirmation_pct": 0.001,
+                "min_rotation_factor": 5.0,
+                "stop_loss_pct": 0.008,
+                "take_profit_pct": 0.015,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "max_spread": 0.003,
+            }
+        }
+    },
+    "up_above_normal_us_normal_expansion": {
+        "enabled_strategies": ["vol_expansion"],
+        "params": {
+            "vol_expansion": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "expansion_threshold": 1.2,
+                "breakout_confirmation_pct": 0.001,
+                "min_rotation_factor": 5.0,
+                "stop_loss_pct": 0.008,
+                "take_profit_pct": 0.015,
+                "risk_per_trade_pct": 2.0,  # Updated for testnet
+                "max_spread": 0.003,
+            }
+        }
+    },
+
+    # ========================================================================
+    # PHASE 4: MICROSTRUCTURE STRATEGIES
+    # ========================================================================
+
+    # --- LIQUIDITY HUNT PROFILES ---
+    "up_above_high_us_normal_hunt": {
+        "enabled_strategies": ["liquidity_hunt"],
+        "params": {
+            "liquidity_hunt": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "min_wick_size_pct": 0.003,
+                "min_rotation_factor": 8.0,
+                "stop_loss_pct": 0.004,
+                "take_profit_pct": 0.008,
+                "risk_per_trade_pct": 2.0,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    "down_below_high_europe_normal_hunt": {
+        "enabled_strategies": ["liquidity_hunt"],
+        "params": {
+            "liquidity_hunt": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "min_wick_size_pct": 0.003,
+                "min_rotation_factor": 8.0,
+                "stop_loss_pct": 0.004,
+                "take_profit_pct": 0.008,
+                "risk_per_trade_pct": 2.0,
+                "max_spread": 0.002,
+            }
+        }
+    },
+
+    # --- SPREAD COMPRESSION PROFILES ---
+    "flat_inside_low_us_compression": {
+        "enabled_strategies": ["spread_compression"],
+        "params": {
+            "spread_compression": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "compression_threshold": 0.5,
+                "min_rotation_factor": 4.0,
+                "breakout_confirmation_pct": 0.001,
+                "stop_loss_pct": 0.006,
+                "take_profit_pct": 0.015,
+                "risk_per_trade_pct": 2.0,
+                "max_spread": 0.001,
+            }
+        }
+    },
+
+    # --- VWAP REVERSION PROFILES ---
+    "flat_inside_normal_us_vwap": {
+        "enabled_strategies": ["vwap_reversion"],
+        "params": {
+            "vwap_reversion": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "min_deviation_pct": 0.01,
+                "max_deviation_pct": 0.03,
+                "rotation_threshold": 3.0,
+                "stop_loss_pct": 0.008,
+                "take_profit_at_vwap": True,
+                "vwap_offset_pct": 0.002,
+                "risk_per_trade_pct": 2.0,
+                "max_spread": 0.003,
+            }
+        }
+    },
+
+    # --- VOLUME PROFILE CLUSTER PROFILES ---
+    "up_inside_normal_us_volume_cluster": {
+        "enabled_strategies": ["volume_profile_cluster"],
+        "params": {
+            "volume_profile_cluster": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "proximity_to_hvn_pct": 0.005,
+                "rotation_threshold": 5.0,
+                "stop_loss_pct": 0.006,
+                "take_profit_pct": 0.012,
+                "risk_per_trade_pct": 2.0,
+                "max_spread": 0.002,
+            }
+        }
+    },
+
+    # --- ORDER FLOW IMBALANCE PROFILES ---
+    "flat_inside_normal_us_orderflow_fade": {
+        "enabled_strategies": ["order_flow_imbalance"],
+        "params": {
+            "order_flow_imbalance": {
+                "allow_longs": True,
+                "allow_shorts": True,
+                "imbalance_threshold": 10.0,
+                "fade_exhaustion": True,
+                "follow_momentum": False,
+                "min_volume_threshold": 5.0,
+                "stop_loss_pct": 0.005,
+                "take_profit_pct": 0.01,
+                "risk_per_trade_pct": 2.0,
+                "max_spread": 0.002,
+            }
+        }
+    },
+
+    # ============================================================================
+    # PHASE 5: RISK-ADAPTIVE STRATEGIES
+    # ============================================================================
+    
+    # --- DRAWDOWN RECOVERY PROFILES ---
+    # Conservative trading after losses to rebuild capital safely
+    
+    "up_above_normal_us_recovery": {
+        "enabled_strategies": ["drawdown_recovery"],
+        "params": {
+            "drawdown_recovery": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "drawdown_threshold_pct": 0.3,
+                "min_distance_from_val_vah_pct": 0.015,
+                "rotation_threshold": 8.0,
+                "stop_loss_pct": 0.005,
+                "take_profit_pct": 0.012,
+                "risk_per_trade_pct": 1.0,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    "down_below_normal_us_recovery": {
+        "enabled_strategies": ["drawdown_recovery"],
+        "params": {
+            "drawdown_recovery": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "drawdown_threshold_pct": 0.3,
+                "min_distance_from_val_vah_pct": 0.015,
+                "rotation_threshold": 8.0,
+                "stop_loss_pct": 0.005,
+                "take_profit_pct": 0.012,
+                "risk_per_trade_pct": 1.0,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    "up_above_high_us_recovery": {
+        "enabled_strategies": ["drawdown_recovery"],
+        "params": {
+            "drawdown_recovery": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "drawdown_threshold_pct": 0.3,
+                "min_distance_from_val_vah_pct": 0.02,
+                "rotation_threshold": 10.0,
+                "stop_loss_pct": 0.006,
+                "take_profit_pct": 0.015,
+                "risk_per_trade_pct": 1.0,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    "down_below_high_us_recovery": {
+        "enabled_strategies": ["drawdown_recovery"],
+        "params": {
+            "drawdown_recovery": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "drawdown_threshold_pct": 0.3,
+                "min_distance_from_val_vah_pct": 0.02,
+                "rotation_threshold": 10.0,
+                "stop_loss_pct": 0.006,
+                "take_profit_pct": 0.015,
+                "risk_per_trade_pct": 1.0,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    "up_above_normal_europe_recovery": {
+        "enabled_strategies": ["drawdown_recovery"],
+        "params": {
+            "drawdown_recovery": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "drawdown_threshold_pct": 0.3,
+                "min_distance_from_val_vah_pct": 0.015,
+                "rotation_threshold": 8.0,
+                "stop_loss_pct": 0.005,
+                "take_profit_pct": 0.012,
+                "risk_per_trade_pct": 1.0,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    "down_below_normal_europe_recovery": {
+        "enabled_strategies": ["drawdown_recovery"],
+        "params": {
+            "drawdown_recovery": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "drawdown_threshold_pct": 0.3,
+                "min_distance_from_val_vah_pct": 0.015,
+                "rotation_threshold": 8.0,
+                "stop_loss_pct": 0.005,
+                "take_profit_pct": 0.012,
+                "risk_per_trade_pct": 1.0,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    # --- MAX PROFIT PROTECTION PROFILES ---
+    # Conservative trading when in profit to protect gains
+    
+    "up_inside_normal_us_protection": {
+        "enabled_strategies": ["max_profit_protection"],
+        "params": {
+            "max_profit_protection": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "profit_threshold_pct": 0.5,
+                "min_poc_distance_pct": 0.005,
+                "rotation_threshold": 7.0,
+                "min_trend_strength": 0.003,
+                "stop_loss_pct": 0.006,
+                "take_profit_pct": 0.009,
+                "risk_per_trade_pct": 1.5,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    "down_inside_normal_us_protection": {
+        "enabled_strategies": ["max_profit_protection"],
+        "params": {
+            "max_profit_protection": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "profit_threshold_pct": 0.5,
+                "min_poc_distance_pct": 0.005,
+                "rotation_threshold": 7.0,
+                "min_trend_strength": 0.003,
+                "stop_loss_pct": 0.006,
+                "take_profit_pct": 0.009,
+                "risk_per_trade_pct": 1.5,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    "up_inside_normal_europe_protection": {
+        "enabled_strategies": ["max_profit_protection"],
+        "params": {
+            "max_profit_protection": {
+                "allow_longs": True,
+                "allow_shorts": False,
+                "profit_threshold_pct": 0.5,
+                "min_poc_distance_pct": 0.005,
+                "rotation_threshold": 7.0,
+                "min_trend_strength": 0.003,
+                "stop_loss_pct": 0.006,
+                "take_profit_pct": 0.009,
+                "risk_per_trade_pct": 1.5,
+                "max_spread": 0.002,
+            }
+        }
+    },
+    
+    "down_inside_normal_europe_protection": {
+        "enabled_strategies": ["max_profit_protection"],
+        "params": {
+            "max_profit_protection": {
+                "allow_longs": False,
+                "allow_shorts": True,
+                "profit_threshold_pct": 0.5,
+                "min_poc_distance_pct": 0.005,
+                "rotation_threshold": 7.0,
+                "min_trend_strength": 0.003,
+                "stop_loss_pct": 0.006,
+                "take_profit_pct": 0.009,
+                "risk_per_trade_pct": 1.5,
+                "max_spread": 0.002,
+            }
+        }
+    },
+})
+
+
+def get_profile_config(profile_id: str) -> dict:
+    """
+    Get configuration for a profile ID
+    
+    Returns:
+        dict: Profile config if found, None if unconfigured
+    
+    Note: Currently returns None for unconfigured profiles (no-trade behavior).
+          In Phase 2, could return DEFAULT_CONSERVATIVE_CONFIG as fallback.
+    """
+    return PROFILE_STRATEGY_CONFIG.get(profile_id)
+

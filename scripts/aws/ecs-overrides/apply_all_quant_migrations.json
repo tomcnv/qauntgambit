@@ -1,0 +1,12 @@
+{
+  "containerOverrides": [
+    {
+      "name": "quantgambit-api",
+      "command": [
+        "bash",
+        "-lc",
+        "cd /app/quantgambit-python && if [ -x ./venv311/bin/python ]; then ./venv311/bin/python scripts/run_migrations.py; elif [ -x ./.venv/bin/python ]; then ./.venv/bin/python scripts/run_migrations.py; else python3 scripts/run_migrations.py; fi"
+      ]
+    }
+  ]
+}

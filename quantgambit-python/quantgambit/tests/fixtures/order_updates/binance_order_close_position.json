@@ -1,0 +1,19 @@
+{
+  "e": "ORDER_TRADE_UPDATE",
+  "E": 1700000001789,
+  "o": {
+    "s": "BTCUSDT",
+    "S": "SELL",
+    "X": "FILLED",
+    "o": "MARKET",
+    "R": false,
+    "cp": true,
+    "q": "1",
+    "z": "1",
+    "L": "29400",
+    "ap": "29400",
+    "n": "0.12",
+    "i": 81235,
+    "c": "cid-binance-close-1"
+  }
+}

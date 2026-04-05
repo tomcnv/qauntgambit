@@ -1,0 +1,183 @@
+# Large local replay exports
+quantgambit-python/outputs/replay_btc_decisionevents_10h.jsonl
+quantgambit-python/outputs/
+# DeepTrader .gitignore
+
+# Environment variables (IMPORTANT - contains API keys!)
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+*.env
+
+# API Keys and Secrets
+**/config/secrets.js
+**/config/keys.js
+api-keys.txt
+secrets.txt
+
+# Node modules
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+.vite/
+*.local
+
+# Logs
+logs/
+*.log
+*.log.*
+deeptrader-backend/logs/
+deeptrader-ui/logs/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# Testing
+coverage/
+.nyc_output/
+*.test.js.snap
+.pytest_cache/
+**/.pytest_cache/
+.coverage
+coverage.xml
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.cache
+
+# Database files (if using local DB)
+*.sqlite
+*.sqlite3
+*.db
+
+# Redis dump
+dump.rdb
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Package manager locks (optional - some prefer to commit these)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Build artifacts
+*.tsbuildinfo
+
+# Terraform local artifacts
+**/.terraform/
+**/.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+tfplan
+*.tfplan
+*.auto.tfvars
+
+# Local data
+data/
+*.csv
+*.json.bak
+
+# Documentation builds
+docs/_build/
+docs/.doctrees/
+
+# Python (if any Python scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+venv311/
+venv314/
+ENV/
+.tox/
+.nox/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+__pypackages__/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb
+
+# Trading data (optional - depends on if you want to track this)
+# trades/
+# portfolio-history/
+# backtest-results/
+
+# User-specific configuration
+config.local.js
+settings.local.json
+
+# Certificates
+*.pem
+*.key
+*.cert
+
+# Misc
+.cache/
+.parcel-cache/
+.next/
+out/
+
+# Local agent / workspace metadata
+.agents/
+.cursor/
+.kiro/
+.playwright-cli/
+
+# Local runtime outputs and exports
+exports/
+output/
+logs/
+prediction_dataset.csv
+quantgambit-python/exports/
+quantgambit-python/models/registry/
+
+# Local secrets and cert material
+.secrets/
+deeptrader-backend/.secrets/
+.env.runtime-live
+.env.spot
+*.crt
+.secret-*
+
+# Erroneous duplicate files created by Finder/editor copy flows
+* 2.*

@@ -1,0 +1,20 @@
+{
+  "topic": "order",
+  "data": [
+    {
+      "category": "linear",
+      "symbol": "BTCUSDT",
+      "orderId": "bybit-125",
+      "orderLinkId": "cid-bybit-partial-1",
+      "orderStatus": "PartiallyFilled",
+      "side": "Buy",
+      "orderType": "Limit",
+      "reduceOnly": false,
+      "qty": "2",
+      "cumExecQty": "1",
+      "avgPrice": "27950",
+      "cumExecFee": "0.05",
+      "updatedTime": 1700000002456
+    }
+  ]
+}

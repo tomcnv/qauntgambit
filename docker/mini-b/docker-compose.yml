@@ -1,0 +1,64 @@
+version: "3.9"
+
+services:
+  redis:
+    # Local dev convention: Redis runs via Homebrew on the host.
+    # Use `--profile container-redis` if you explicitly want Redis in Docker.
+    profiles: ["container-redis"]
+    image: redis:7-alpine
+    container_name: mini-b-redis
+    restart: unless-stopped
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf:ro
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+
+  postgres_platform:
+    image: postgres:14
+    container_name: mini-b-postgres-platform
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${PLATFORM_DB_USER:-platform}
+      POSTGRES_PASSWORD: ${PLATFORM_DB_PASSWORD:-platform_pw}
+      POSTGRES_DB: ${PLATFORM_DB_NAME:-platform_db}
+    ports:
+      - "${PLATFORM_DB_PORT:-5432}:5432"
+    volumes:
+      - pg_platform_data:/var/lib/postgresql/data
+      - ./postgresql-platform.conf:/etc/postgresql/postgresql.conf:ro
+    command: ["-c", "config_file=/etc/postgresql/postgresql.conf"]
+    deploy:
+      resources:
+        limits:
+          memory: 3g
+
+  timescale_bot:
+    image: timescale/timescaledb:2.14.2-pg14
+    container_name: mini-b-timescale-bot
+    restart: unless-stopped
+    shm_size: 512mb
+    environment:
+      POSTGRES_USER: ${BOT_DB_USER:-quantgambit}
+      POSTGRES_PASSWORD: ${BOT_DB_PASSWORD:-quantgambit_pw}
+      POSTGRES_DB: ${BOT_DB_NAME:-quantgambit_bot}
+    ports:
+      - "${BOT_DB_PORT:-5433}:5432"
+    volumes:
+      - pg_timescale_data:/var/lib/postgresql/data
+      - ./postgresql-timescale.conf:/etc/postgresql/postgresql.conf:ro
+    command: ["-c", "config_file=/etc/postgresql/postgresql.conf"]
+    deploy:
+      resources:
+        limits:
+          memory: 4g
+
+volumes:
+  redis_data:
+  pg_platform_data:
+  pg_timescale_data:

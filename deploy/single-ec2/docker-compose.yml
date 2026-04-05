@@ -1,0 +1,205 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: quantgambit-redis
+    restart: unless-stopped
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redis_data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf:ro
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  postgres_platform:
+    image: postgres:16
+    container_name: quantgambit-postgres-platform
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${PLATFORM_DB_USER}
+      POSTGRES_PASSWORD: ${PLATFORM_DB_PASSWORD}
+      POSTGRES_DB: ${PLATFORM_DB_NAME}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pg_platform_data:/var/lib/postgresql/data
+      - ./postgresql-platform.conf:/etc/postgresql/postgresql.conf:ro
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${PLATFORM_DB_USER} -d ${PLATFORM_DB_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  timescale_bot:
+    image: timescale/timescaledb:2.14.2-pg14
+    container_name: quantgambit-timescale-bot
+    restart: unless-stopped
+    shm_size: 1gb
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${BOT_DB_USER}
+      POSTGRES_PASSWORD: ${BOT_DB_PASSWORD}
+      POSTGRES_DB: ${BOT_DB_NAME}
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - pg_timescale_data:/var/lib/postgresql/data
+      - ./postgresql-timescale.conf:/etc/postgresql/postgresql.conf:ro
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${BOT_DB_USER} -d ${BOT_DB_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  deeptrader-backend:
+    build:
+      context: ../../deeptrader-backend
+      dockerfile: Dockerfile.prod
+    container_name: quantgambit-core-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    depends_on:
+      postgres_platform:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:3001:3001"
+    ulimits:
+      nofile:
+        soft: 131072
+        hard: 131072
+
+  quantgambit-api:
+    build:
+      context: ../..
+      dockerfile: Dockerfile.aws
+    container_name: quantgambit-bot-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: ["python3", "-m", "quantgambit.api.app"]
+    depends_on:
+      timescale_bot:
+        condition: service_healthy
+      postgres_platform:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:3002:3002"
+    ulimits:
+      nofile:
+        soft: 131072
+        hard: 131072
+
+  market-data-service-bybit:
+    build:
+      context: ../..
+      dockerfile: Dockerfile.aws
+    container_name: quantgambit-mds-bybit
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: ["python3", "./market-data-service/app.py"]
+    environment:
+      EXCHANGE: bybit
+      MARKET_TYPE: perp
+      TESTNET: "false"
+      PUBLISH_MODE: both
+      ORDERBOOK_EVENT_STREAM: events:orderbook_feed:bybit
+      TRADES_ENABLED: "true"
+      TRADE_EVENT_STREAM: events:trades:bybit
+      MARKET_DATA_STREAM: events:market_data:bybit
+      PORT: "8083"
+      TICKERS_ENABLED: "false"
+      MAX_STREAM_LENGTH: "5000"
+      PUBLISH_MAXLEN: "10000"
+      BACKPRESSURE_SLEEP_MS: "100"
+      SNAPSHOT_INTERVAL_SEC: "30"
+      USE_MAINNET_PUBLIC_WS: "true"
+      TRADE_WS_MESSAGE_TIMEOUT_SEC: "30"
+      TRADE_WS_STALE_GUARDRAIL_SEC: "60"
+      TRADE_WS_STALE_WATCHDOG_SEC: "45"
+      TRADE_REST_FALLBACK_ENABLED: "true"
+      TRADE_REST_FALLBACK_INTERVAL_SEC: "30"
+      TRADE_REST_FALLBACK_LIMIT: "10"
+      ORDERBOOK_WS_RECV_TIMEOUT_SEC: "10"
+      ORDERBOOK_WS_HEARTBEAT_SEC: "10"
+      BYBIT_ORDERBOOK_INCLUDE_L1: "true"
+      BYBIT_ORDERBOOK_WS_ONLY: "true"
+      ORDERBOOK_WS_ONLY_SNAPSHOT: "true"
+      MDS_HEALTH_KEY: mds:health:bybit
+      TRADE_STALE_SEC: "30"
+      ORDERBOOK_STALE_SEC: "30"
+      BACKOFF_TRIGGER_COUNT: "3"
+      BACKOFF_WINDOW_SEC: "120"
+      BACKOFF_DURATION_SEC: "60"
+    depends_on:
+      redis:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8083:8083"
+
+  market-data-service-bybit-spot:
+    build:
+      context: ../..
+      dockerfile: Dockerfile.aws
+    container_name: quantgambit-mds-bybit-spot
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: ["python3", "./market-data-service/app.py"]
+    environment:
+      EXCHANGE: bybit
+      MARKET_TYPE: spot
+      TESTNET: "false"
+      PUBLISH_MODE: both
+      ORDERBOOK_EVENT_STREAM: events:orderbook_feed:bybit:spot
+      TRADES_ENABLED: "true"
+      TRADE_EVENT_STREAM: events:trades:bybit:spot
+      MARKET_DATA_STREAM: events:market_data:bybit
+      PORT: "8084"
+      TICKERS_ENABLED: "false"
+      MAX_STREAM_LENGTH: "5000"
+      PUBLISH_MAXLEN: "10000"
+      BACKPRESSURE_SLEEP_MS: "100"
+      SNAPSHOT_INTERVAL_SEC: "30"
+      USE_MAINNET_PUBLIC_WS: "true"
+      TRADE_WS_MESSAGE_TIMEOUT_SEC: "30"
+      TRADE_WS_STALE_GUARDRAIL_SEC: "60"
+      TRADE_WS_STALE_WATCHDOG_SEC: "45"
+      TRADE_REST_FALLBACK_ENABLED: "true"
+      TRADE_REST_FALLBACK_INTERVAL_SEC: "30"
+      TRADE_REST_FALLBACK_LIMIT: "10"
+      ORDERBOOK_WS_RECV_TIMEOUT_SEC: "10"
+      ORDERBOOK_WS_HEARTBEAT_SEC: "10"
+      BYBIT_ORDERBOOK_INCLUDE_L1: "true"
+      BYBIT_ORDERBOOK_WS_ONLY: "true"
+      ORDERBOOK_WS_ONLY_SNAPSHOT: "true"
+      MDS_HEALTH_KEY: mds:health:bybit:spot
+      TRADE_STALE_SEC: "30"
+      ORDERBOOK_STALE_SEC: "30"
+      BACKOFF_TRIGGER_COUNT: "3"
+      BACKOFF_WINDOW_SEC: "120"
+      BACKOFF_DURATION_SEC: "60"
+    depends_on:
+      redis:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8084:8084"
+
+volumes:
+  redis_data:
+  pg_platform_data:
+  pg_timescale_data:

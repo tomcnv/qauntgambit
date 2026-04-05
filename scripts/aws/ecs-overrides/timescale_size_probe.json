@@ -1,0 +1,13 @@
+{
+  "containerOverrides": [
+    {
+      "name": "data-persistence-worker",
+      "command": [
+        "python",
+        "-c",
+        "import os,asyncio,asyncpg\n\nasync def main():\n  url = os.environ.get('BOT_TIMESCALE_URL') or ''\n  if not url:\n    raise SystemExit('BOT_TIMESCALE_URL is missing')\n\n  conn = await asyncpg.connect(url)\n  try:\n    db = await conn.fetchval('select current_database()')\n    now = await conn.fetchval('select now()')\n    db_size = await conn.fetchval('select pg_database_size(current_database())')\n    print('db', db)\n    print('now', now)\n    print('db_size_bytes', int(db_size or 0))\n\n    for t in ['orderbook_events','orderbook_snapshots','trade_records','market_candles']:\n      reg = await conn.fetchval(\"select to_regclass('public.'||$1)\", t)\n      if not reg:\n        print('table', t, 'MISSING')\n        continue\n      total = await conn.fetchval('select pg_total_relation_size($1::regclass)', reg)\n      heap = await conn.fetchval('select pg_relation_size($1::regclass)', reg)\n      idx = await conn.fetchval('select pg_indexes_size($1::regclass)', reg)\n      print('table_size', t, {'total_bytes': int(total or 0), 'heap_bytes': int(heap or 0), 'index_bytes': int(idx or 0)})\n\n    # Retention sanity (age of earliest orderbook event)\n    if await conn.fetchval(\"select to_regclass('public.orderbook_events')\"):\n      min_ts = await conn.fetchval('select min(ts) from orderbook_events')\n      max_ts = await conn.fetchval('select max(ts) from orderbook_events')\n      print('orderbook_events_min_ts', min_ts)\n      print('orderbook_events_max_ts', max_ts)\n      if min_ts:\n        age_sec = await conn.fetchval(\"select extract(epoch from (now() - $1::timestamptz))\", min_ts)\n        print('orderbook_events_min_age_hours', float(age_sec or 0)/3600.0)\n  finally:\n    await conn.close()\n\nasyncio.run(main())\n"
+      ]
+    }
+  ]
+}
+

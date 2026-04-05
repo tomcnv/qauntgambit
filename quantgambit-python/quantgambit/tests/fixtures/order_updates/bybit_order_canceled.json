@@ -1,0 +1,20 @@
+{
+  "topic": "order",
+  "data": [
+    {
+      "category": "linear",
+      "symbol": "BTCUSDT",
+      "orderId": "bybit-126",
+      "orderLinkId": "cid-bybit-cancel-1",
+      "orderStatus": "Cancelled",
+      "side": "Sell",
+      "orderType": "Limit",
+      "reduceOnly": true,
+      "qty": "1",
+      "cumExecQty": "0",
+      "avgPrice": "0",
+      "cumExecFee": "0",
+      "updatedTime": 1700000003456
+    }
+  ]
+}

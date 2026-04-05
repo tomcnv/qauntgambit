@@ -1,0 +1,5 @@
+{"v": 1, "type": "book.snapshot", "source": "sim.public", "symbol": "BTCUSDT", "ts_wall": 1704067200.0, "ts_mono": 0.0, "trace_id": "trace_001", "seq": 1, "payload": {"bids": [[100.0, 10.0]], "asks": [[100.2, 10.0]]}}
+{"v": 1, "type": "book.delta", "source": "sim.public", "symbol": "BTCUSDT", "ts_wall": 1704067202.0, "ts_mono": 2.0, "trace_id": "trace_002", "seq": 2, "payload": {"bids": [[100.05, 15.0]], "asks": [[100.15, 12.0]]}}
+{"v": 1, "type": "book.delta", "source": "sim.public", "symbol": "BTCUSDT", "ts_wall": 1704067204.0, "ts_mono": 4.0, "trace_id": "trace_003", "seq": 3, "payload": {"bids": [[100.1, 20.0]], "asks": [[100.12, 8.0]]}}
+{"v": 1, "type": "book.delta", "source": "sim.public", "symbol": "BTCUSDT", "ts_wall": 1704067206.0, "ts_mono": 6.0, "trace_id": "trace_004", "seq": 4, "payload": {"bids": [[100.15, 25.0]], "asks": [[100.18, 5.0]]}}
+{"v": 1, "type": "book.delta", "source": "sim.public", "symbol": "BTCUSDT", "ts_wall": 1704067208.0, "ts_mono": 8.0, "trace_id": "trace_005", "seq": 5, "payload": {"bids": [[100.2, 30.0]], "asks": [[100.25, 10.0]]}}

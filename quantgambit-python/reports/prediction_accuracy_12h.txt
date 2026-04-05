@@ -1,0 +1,72 @@
+{
+  "since": "2026-02-24T08:43:16.750928+00:00",
+  "summary": {
+    "aligned_trades": 0,
+    "aligned_win_rate_pct": 0.0,
+    "by_prediction_source": {},
+    "by_profile": {
+      "midvol_mean_reversion": {
+        "aligned_win_rate_pct": 0.0,
+        "avg_net_pnl": -3.311238,
+        "trades": 19,
+        "win_rate_pct": 0.0
+      },
+      "range_market_scalp": {
+        "aligned_win_rate_pct": 0.0,
+        "avg_net_pnl": -3.537597,
+        "trades": 35,
+        "win_rate_pct": 0.0
+      },
+      "value_area_rejection": {
+        "aligned_win_rate_pct": 0.0,
+        "avg_net_pnl": 2.562399,
+        "trades": 1,
+        "win_rate_pct": 100.0
+      }
+    },
+    "by_strategy": {
+      "amt_value_area_rejection_scalp": {
+        "aligned_win_rate_pct": 0.0,
+        "avg_net_pnl": 2.562399,
+        "trades": 1,
+        "win_rate_pct": 100.0
+      },
+      "mean_reversion_fade": {
+        "aligned_win_rate_pct": 0.0,
+        "avg_net_pnl": -3.51205,
+        "trades": 48,
+        "win_rate_pct": 0.0
+      }
+    },
+    "by_symbol": {
+      "BTCUSDT": {
+        "aligned_win_rate_pct": 0.0,
+        "avg_net_pnl": -1.707713,
+        "trades": 111,
+        "win_rate_pct": 9.91
+      },
+      "ETHUSDT": {
+        "aligned_win_rate_pct": 0.0,
+        "avg_net_pnl": -1.562696,
+        "trades": 95,
+        "win_rate_pct": 12.63
+      },
+      "SOLUSDT": {
+        "aligned_win_rate_pct": 0.0,
+        "avg_net_pnl": -1.687718,
+        "trades": 94,
+        "win_rate_pct": 13.83
+      }
+    },
+    "misaligned_trades": 0,
+    "misaligned_win_rate_pct": 0.0,
+    "missing_alignment": 300,
+    "p_hat_brier": 0.499257,
+    "p_hat_ece_10": 0.682254,
+    "p_hat_trades": 43,
+    "prediction_source_breakdown": {},
+    "trades": 300,
+    "win_rate_pct": 12.0
+  },
+  "symbol": null
+}

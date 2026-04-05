@@ -1,0 +1,22 @@
+{
+  "arg": {
+    "channel": "orders"
+  },
+  "data": [
+    {
+      "instId": "BTC-USDT-SWAP",
+      "ordId": "90211",
+      "clOrdId": "cid-okx-sl-1",
+      "state": "filled",
+      "side": "sell",
+      "sz": "1",
+      "accFillSz": "1",
+      "avgPx": "30000",
+      "fee": "-0.1",
+      "ordType": "stop",
+      "slTriggerPx": "29900",
+      "reduceOnly": "true",
+      "uTime": "1700000001123"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+import pytest
+
+
+_SANITIZED_TEST_MODULES = {
+    "test_deeptrader_stage_pipeline.py",
+    "test_model_direction_alignment_stage.py",
+    "test_gating_stages.py",
+    "test_prediction_stage.py",
+    "test_prediction_providers.py",
+    "test_feature_worker_prediction.py",
+    "test_strategy_selection.py",
+    "test_bugfix_pipeline_fault_properties.py",
+}
+
+_SANITIZED_ENV_VARS = (
+    "MIN_NET_EDGE_BPS",
+    "FEE_BPS",
+    "SLIPPAGE_BPS_MULTIPLIER",
+    "NET_EDGE_BUFFER_BPS",
+    "PREDICTION_GATE_PASSTHROUGH_ON_REJECT",
+    "PREDICTION_GATE_ENFORCE_SCORE_METRICS",
+    "PREDICTION_SCORE_MIN_DIRECTIONAL_ACCURACY",
+    "PREDICTION_SCORE_MIN_DIRECTIONAL_ACCURACY_LONG",
+    "PREDICTION_SCORE_MIN_DIRECTIONAL_ACCURACY_SHORT",
+    "PREDICTION_SCORE_MAX_ECE",
+    "PREDICTION_SCORE_MAX_ECE_LONG",
+    "PREDICTION_SCORE_MAX_ECE_SHORT",
+    "PREDICTION_HEURISTIC_VERSION",
+    "PREDICTION_HEURISTIC_V2_ENTRY_SCORE",
+    "PREDICTION_HEURISTIC_V2_ENTRY_SCORE_LONG",
+    "PREDICTION_HEURISTIC_V2_ENTRY_SCORE_SHORT",
+    "PREDICTION_HEURISTIC_V2_MIN_DATA_COMPLETENESS",
+    "PREDICTION_HEURISTIC_V2_EXPECTED_MOVE_PER_SCORE_BPS",
+    "PREDICTION_HEURISTIC_V2_MIN_NET_EDGE_BPS",
+    "PREDICTION_HEURISTIC_V2_FEE_BPS",
+    "PREDICTION_HEURISTIC_V2_SLIPPAGE_BPS",
+    "PREDICTION_HEURISTIC_V2_ADVERSE_SELECTION_BPS",
+    "MODEL_DIRECTION_ALIGNMENT_UNCONDITIONAL",
+    "MODEL_DIRECTION_ALIGNMENT_ENFORCE_SOURCES",
+    "DISABLE_STRATEGIES",
+    "DISABLE_MEAN_REVERSION_SYMBOLS",
+    "ENABLE_STRATEGIES_BY_SYMBOL",
+    "ENABLE_CONFIRMATION_STAGE",
+    "ENABLE_UNIFIED_CONFIRMATION_POLICY",
+    "ENABLE_LEGACY_CONFIRMATION_ADAPTER",
+)
+
+
+@pytest.fixture(autouse=True)
+def _sanitize_prediction_and_gating_env(request, monkeypatch):
+    module_name = request.node.fspath.basename
+    if module_name not in _SANITIZED_TEST_MODULES:
+        return
+    for key in _SANITIZED_ENV_VARS:
+        monkeypatch.delenv(key, raising=False)

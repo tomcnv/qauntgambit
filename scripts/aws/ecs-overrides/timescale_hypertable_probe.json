@@ -1,0 +1,13 @@
+{
+  "containerOverrides": [
+    {
+      "name": "data-persistence-worker",
+      "command": [
+        "python",
+        "-c",
+        "import os,asyncio,asyncpg\n\nasync def main():\n  url = os.environ.get('BOT_TIMESCALE_URL') or ''\n  if not url:\n    raise SystemExit('BOT_TIMESCALE_URL is missing')\n\n  conn = await asyncpg.connect(url)\n  try:\n    has_timescale = await conn.fetchval(\"select exists(select 1 from pg_extension where extname='timescaledb')\")\n    print('timescaledb_extension', bool(has_timescale))\n\n    # Partitioned table check (works even without timescale)\n    for t in ['orderbook_events','orderbook_snapshots']:\n      reg = await conn.fetchval(\"select to_regclass('public.'||$1)\", t)\n      if not reg:\n        print('table', t, 'MISSING')\n        continue\n      kind = await conn.fetchval(\"select relkind from pg_class where oid=$1::regclass\", reg)\n      is_partitioned = (kind == 'p')\n      print('table_kind', t, kind, 'partitioned' if is_partitioned else '')\n\n    if not has_timescale:\n      return\n\n    # If timescale is installed, compute chunk sizes for orderbook_events if it's a hypertable.\n    ht = await conn.fetchrow(\n      \"select hypertable_schema, hypertable_name from timescaledb_information.hypertables where hypertable_schema='public' and hypertable_name='orderbook_events'\"\n    )\n    if not ht:\n      print('orderbook_events_hypertable', False)\n      return\n\n    total = await conn.fetchval(\n      \"select coalesce(sum(pg_total_relation_size(format('%I.%I', chunk_schema, chunk_name)::regclass)),0)::bigint \"\n      \"from timescaledb_information.chunks where hypertable_schema='public' and hypertable_name='orderbook_events'\"\n    )\n    chunks = await conn.fetchval(\n      \"select count(1)::int from timescaledb_information.chunks where hypertable_schema='public' and hypertable_name='orderbook_events'\"\n    )\n    latest = await conn.fetchrow(\n      \"select chunk_schema, chunk_name, range_end from timescaledb_information.chunks \"\n      \"where hypertable_schema='public' and hypertable_name='orderbook_events' order by range_end desc nulls last limit 1\"\n    )\n\n    print('orderbook_events_hypertable', True)\n    print('orderbook_events_chunk_count', int(chunks or 0))\n    print('orderbook_events_chunks_total_bytes', int(total or 0))\n    print('orderbook_events_latest_chunk', dict(latest) if latest else None)\n  finally:\n    await conn.close()\n\nasyncio.run(main())\n"
+      ]
+    }
+  ]
+}
+

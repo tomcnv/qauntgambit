@@ -1,0 +1,13 @@
+{
+  "containerOverrides": [
+    {
+      "name": "data-persistence-worker",
+      "command": [
+        "python",
+        "-c",
+        "import os,asyncio,asyncpg\n\nasync def main():\n  url=os.environ.get('BOT_TIMESCALE_URL') or ''\n  print('BOT_TIMESCALE_URL_set', bool(url))\n  if not url:\n    raise SystemExit('BOT_TIMESCALE_URL is missing')\n  conn=await asyncpg.connect(url)\n  try:\n    for t in ['orderbook_events','orderbook_snapshots','market_candles','trade_records']:\n      reg=await conn.fetchval(\"select to_regclass('public.'||$1)\", t)\n      print(t, 'exists' if reg else 'MISSING')\n      if reg:\n        n=await conn.fetchval('select count(1) from ' + reg)\n        print(t, 'rows', n)\n  finally:\n    await conn.close()\n\nasyncio.run(main())\n"
+      ]
+    }
+  ]
+}
+

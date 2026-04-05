@@ -1,0 +1,35 @@
+FROM node:20-bookworm
+
+WORKDIR /app
+
+# System dependencies for Python runtime and common native builds.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 \
+    python3-pip \
+    python3-venv \
+    build-essential \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# ECS task commands use `python`, so keep a stable alias.
+RUN ln -sf /usr/bin/python3 /usr/local/bin/python
+
+# Install Node dependencies for core backend.
+COPY deeptrader-backend/package*.json /app/deeptrader-backend/
+RUN cd /app/deeptrader-backend && npm ci --omit=dev
+
+# Install Python dependencies for bot API, workers, and market data.
+COPY quantgambit-python/requirements.txt /tmp/requirements-python.txt
+COPY market-data-service/requirements.txt /tmp/requirements-market-data.txt
+RUN python3 -m pip install --no-cache-dir --break-system-packages -r /tmp/requirements-python.txt \
+    && python3 -m pip install --no-cache-dir --break-system-packages -r /tmp/requirements-market-data.txt
+
+# Copy runtime source code.
+COPY deeptrader-backend /app/deeptrader-backend
+COPY quantgambit-python /app/quantgambit-python
+COPY market-data-service /app/market-data-service
+
+ENV PYTHONPATH="/app/quantgambit-python"
+
+# Default command is overridden by ECS task definitions per service.
+CMD ["python3", "-m", "quantgambit.api.app"]

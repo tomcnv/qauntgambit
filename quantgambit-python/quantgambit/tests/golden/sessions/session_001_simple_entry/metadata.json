@@ -1,0 +1,22 @@
+{
+  "session_id": "session_001_simple_entry",
+  "description": "Simple entry scenario: single buy signal on favorable conditions",
+  "created_at": "2024-01-01T00:00:00Z",
+  "duration_s": 10.0,
+  "symbols": ["BTCUSDT"],
+  "config_bundle_id": "test_bundle_v1",
+  "feature_set_version_id": "dummy_v1",
+  "model_version_id": "dummy_model_v1",
+  "calibrator_version_id": "passthrough_v1",
+  "risk_profile_version_id": "vol_target_v1",
+  "execution_policy_version_id": "market_v1",
+  "initial_state": {
+    "equity": 10000.0,
+    "positions": {}
+  },
+  "expected_outcomes": {
+    "total_decisions": 5,
+    "intents_emitted": 1,
+    "blocked_count": 4
+  }
+}

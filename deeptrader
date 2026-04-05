@@ -1,0 +1,4 @@
+#!/bin/bash
+# Legacy CLI wrapper disabled.
+echo "This script is deprecated. Use the QuantGambit tooling instead."
+exit 1

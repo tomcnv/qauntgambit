@@ -1,0 +1,14 @@
+{
+  "containerOverrides": [
+    {
+      "name": "core-api",
+      "command": [
+        "node",
+        "--input-type=module",
+        "-e",
+        "import pool from './deeptrader-backend/config/database.js';\n\nconst statements = [\n  \"DROP TRIGGER IF EXISTS trigger_create_paper_balance ON exchange_accounts\",\n  \"DROP FUNCTION IF EXISTS create_paper_balance_on_account_insert()\"\n];\n\ntry {\n  for (const stmt of statements) {\n    await pool.query(stmt);\n    console.log('APPLIED_SQL', stmt);\n  }\n  await pool.end();\n  console.log('OK');\n} catch (e) {\n  console.error('MIGRATION_ERROR', e && e.message ? e.message : String(e));\n  try { await pool.end(); } catch {}\n  process.exit(1);\n}\n"
+      ]
+    }
+  ]
+}
+

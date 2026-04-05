@@ -1,0 +1,119 @@
+{
+  "results": [
+    {
+      "symbol": "BTC-USDT-SWAP",
+      "timestamp": 1705000000,
+      "decision": "rejected",
+      "rejection_reason": "no_profile_match",
+      "profile_id": null,
+      "equity": 10000.0,
+      "realized_pnl": 0.0,
+      "open_positions": 0
+    },
+    {
+      "symbol": "BTC-USDT-SWAP",
+      "timestamp": 1705000060,
+      "decision": "rejected",
+      "rejection_reason": "no_profile_match",
+      "profile_id": null,
+      "equity": 10000.0,
+      "realized_pnl": 0.0,
+      "open_positions": 0
+    },
+    {
+      "symbol": "BTC-USDT-SWAP",
+      "timestamp": 1705000120,
+      "decision": "rejected",
+      "rejection_reason": "no_profile_match",
+      "profile_id": null,
+      "equity": 10000.0,
+      "realized_pnl": 0.0,
+      "open_positions": 0
+    },
+    {
+      "symbol": "BTC-USDT-SWAP",
+      "timestamp": 1705000180,
+      "decision": "rejected",
+      "rejection_reason": "no_profile_match",
+      "profile_id": null,
+      "equity": 10000.0,
+      "realized_pnl": 0.0,
+      "open_positions": 0
+    },
+    {
+      "symbol": "BTC-USDT-SWAP",
+      "timestamp": 1705000240,
+      "decision": "rejected",
+      "rejection_reason": "no_profile_match",
+      "profile_id": null,
+      "equity": 10000.0,
+      "realized_pnl": 0.0,
+      "open_positions": 0
+    },
+    {
+      "symbol": "ETH-USDT-SWAP",
+      "timestamp": 1705000300,
+      "decision": "rejected",
+      "rejection_reason": "no_profile_match",
+      "profile_id": null,
+      "equity": 10000.0,
+      "realized_pnl": 0.0,
+      "open_positions": 0
+    },
+    {
+      "symbol": "BTC-USDT-SWAP",
+      "timestamp": 1705000360,
+      "decision": "rejected",
+      "rejection_reason": "no_profile_match",
+      "profile_id": null,
+      "equity": 10000.0,
+      "realized_pnl": 0.0,
+      "open_positions": 0
+    },
+    {
+      "symbol": "BTC-USDT-SWAP",
+      "timestamp": 1705000420,
+      "decision": "rejected",
+      "rejection_reason": "no_profile_match",
+      "profile_id": null,
+      "equity": 10000.0,
+      "realized_pnl": 0.0,
+      "open_positions": 0
+    },
+    {
+      "symbol": "BTC-USDT-SWAP",
+      "timestamp": 1705000480,
+      "decision": "rejected",
+      "rejection_reason": "no_profile_match",
+      "profile_id": null,
+      "equity": 10000.0,
+      "realized_pnl": 0.0,
+      "open_positions": 0
+    },
+    {
+      "symbol": "BTC-USDT-SWAP",
+      "timestamp": 1705000540,
+      "decision": "rejected",
+      "rejection_reason": "no_profile_match",
+      "profile_id": null,
+      "equity": 10000.0,
+      "realized_pnl": 0.0,
+      "open_positions": 0
+    }
+  ],
+  "summary": {
+    "total_snapshots": 10,
+    "accepted": 0,
+    "rejected": 10,
+    "warmup": 0
+  },
+  "report": {
+    "total_trades": 0,
+    "realized_pnl": 0.0,
+    "total_return_pct": 0.0,
+    "win_rate": 0.0,
+    "max_drawdown_pct": 0.0,
+    "profit_factor": 0.0,
+    "total_fees": 0.0
+  }
+}

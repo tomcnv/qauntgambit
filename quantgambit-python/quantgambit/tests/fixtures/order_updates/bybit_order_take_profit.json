@@ -1,0 +1,22 @@
+{
+  "topic": "order",
+  "data": [
+    {
+      "category": "linear",
+      "symbol": "BTCUSDT",
+      "orderId": "bybit-124",
+      "orderLinkId": "cid-bybit-tp-1",
+      "orderStatus": "Filled",
+      "side": "Sell",
+      "orderType": "Market",
+      "stopOrderType": "TakeProfit",
+      "closeOnTrigger": true,
+      "reduceOnly": true,
+      "qty": "1",
+      "cumExecQty": "1",
+      "avgPrice": "28500",
+      "cumExecFee": "0.1",
+      "updatedTime": 1700000001456
+    }
+  ]
+}

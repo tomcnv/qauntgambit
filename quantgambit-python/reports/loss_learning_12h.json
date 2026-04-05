@@ -1,0 +1,192 @@
+{
+  "by_reason": [
+    {
+      "avg_fees": 1.3632,
+      "avg_net": -2.4785,
+      "n": 302,
+      "reason": "exchange_reconcile",
+      "sum_net": -748.5076
+    },
+    {
+      "avg_fees": 1.4513,
+      "avg_net": -1.5557,
+      "n": 221,
+      "reason": "max_age_hard_exceeded",
+      "sum_net": -343.7997
+    },
+    {
+      "avg_fees": 3.74,
+      "avg_net": -3.5971,
+      "n": 35,
+      "reason": "max_hold_exceeded",
+      "sum_net": -125.8996
+    },
+    {
+      "avg_fees": 1.5403,
+      "avg_net": 0.9292,
+      "n": 24,
+      "reason": "breakeven_stop_hit",
+      "sum_net": 22.3004
+    },
+    {
+      "avg_fees": 1.4031,
+      "avg_net": -2.3597,
+      "n": 22,
+      "reason": "max_age_exceeded",
+      "sum_net": -51.9142
+    },
+    {
+      "avg_fees": 2.2054,
+      "avg_net": -0.1583,
+      "n": 18,
+      "reason": "position_close",
+      "sum_net": -2.8497
+    },
+    {
+      "avg_fees": 2.7305,
+      "avg_net": -2.8365,
+      "n": 8,
+      "reason": "execution_update",
+      "sum_net": -22.6917
+    },
+    {
+      "avg_fees": 1.3695,
+      "avg_net": 2.5624,
+      "n": 1,
+      "reason": "safety_exit: data_stale_while_in_position",
+      "sum_net": 2.5624
+    },
+    {
+      "avg_fees": 4.0759,
+      "avg_net": -4.7259,
+      "n": 1,
+      "reason": "safety_exit: deeply_underwater_emergency (pnl=-1.05%)",
+      "sum_net": -4.7259
+    }
+  ],
+  "by_symbol_side": [
+    {
+      "avg_net": -1.9738,
+      "close_side": "sell",
+      "fee_kill_rate": 19.4969,
+      "n": 159,
+      "sum_net": -313.8372,
+      "symbol": "BTCUSDT",
+      "win_rate": 9.434
+    },
+    {
+      "avg_net": -1.9292,
+      "close_side": "sell",
+      "fee_kill_rate": 19.2308,
+      "n": 156,
+      "sum_net": -300.9523,
+      "symbol": "ETHUSDT",
+      "win_rate": 12.8205
+    },
+    {
+      "avg_net": -2.4591,
+      "close_side": "buy",
+      "fee_kill_rate": 19.1919,
+      "n": 99,
+      "sum_net": -243.4503,
+      "symbol": "SOLUSDT",
+      "win_rate": 8.0808
+    },
+    {
+      "avg_net": -2.3078,
+      "close_side": "buy",
+      "fee_kill_rate": 25.0,
+      "n": 76,
+      "sum_net": -175.3896,
+      "symbol": "BTCUSDT",
+      "win_rate": 5.2632
+    },
+    {
+      "avg_net": -1.4594,
+      "close_side": "sell",
+      "fee_kill_rate": 27.4725,
+      "n": 91,
+      "sum_net": -132.8011,
+      "symbol": "SOLUSDT",
+      "win_rate": 14.2857
+    },
+    {
+      "avg_net": -2.0416,
+      "close_side": "buy",
+      "fee_kill_rate": 17.7778,
+      "n": 45,
+      "sum_net": -91.8701,
+      "symbol": "ETHUSDT",
+      "win_rate": 8.8889
+    },
+    {
+      "avg_net": -3.2516,
+      "close_side": "long",
+      "fee_kill_rate": 0.0,
+      "n": 2,
+      "sum_net": -6.5032,
+      "symbol": "ETHUSDT",
+      "win_rate": 0.0
+    },
+    {
+      "avg_net": -2.9412,
+      "close_side": "long",
+      "fee_kill_rate": 50.0,
+      "n": 2,
+      "sum_net": -5.8824,
+      "symbol": "BTCUSDT",
+      "win_rate": 0.0
+    },
+    {
+      "avg_net": -2.4197,
+      "close_side": "short",
+      "fee_kill_rate": 100.0,
+      "n": 2,
+      "sum_net": -4.8394,
+      "symbol": "SOLUSDT",
+      "win_rate": 0.0
+    }
+  ],
+  "headline": {
+    "avg_gross": -0.4389,
+    "avg_net": -2.0182,
+    "edge_negative_rate_pct": 68.5127,
+    "fee_kill_rate_pct": 21.3608,
+    "gross_win_rate": 31.4873,
+    "n": 632,
+    "net_win_rate": 10.1266,
+    "sum_fees": 998.1369,
+    "sum_gross": -277.3888,
+    "sum_net": -1275.5256
+  },
+  "onnx_linked": {
+    "p_hat_buckets": [
+      {
+        "avg_net": -2.0967,
+        "bucket": "missing",
+        "n": 596,
+        "sum_net": -1249.6152,
+        "win_rate": 9.396
+      }
+    ],
+    "paired_headline": {
+      "avg_entry_p_hat": 0.0,
+      "avg_match_dt_sec": 61.9112,
+      "avg_net": -2.0967,
+      "avg_prediction_confidence": 0.0,
+      "matched": 596,
+      "sum_net": -1249.6152,
+      "win_rate": 9.396
+    }
+  },
+  "recommendations": [
+    "Primary issue is directional edge (gross-negative majority). Tighten/disable worst symbol-side cohorts first, not global risk.",
+    "Secondary issue is fee-kill churn. Raise minimum net-edge and min-profit buffers or reduce taker-only churn windows.",
+    "Worst cohort `BTCUSDT` `sell` is strongly negative (win 9.4%, net -313.84). Apply side-specific gating or temporary disable.",
+    "Worst cohort `ETHUSDT` `sell` is strongly negative (win 12.8%, net -300.95). Apply side-specific gating or temporary disable.",
+    "Worst cohort `SOLUSDT` `buy` is strongly negative (win 8.1%, net -243.45). Apply side-specific gating or temporary disable."
+  ],
+  "window": {
+    "since": "2026-02-24T08:43:16.729988+00:00"
+  }
+}

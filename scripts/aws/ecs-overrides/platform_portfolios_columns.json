@@ -1,0 +1,14 @@
+{
+  "containerOverrides": [
+    {
+      "name": "core-api",
+      "command": [
+        "node",
+        "--input-type=module",
+        "-e",
+        "import pool from './deeptrader-backend/config/database.js';\n\ntry {\n  const res = await pool.query(\n    `select column_name, data_type\n     from information_schema.columns\n     where table_schema='public' and table_name='portfolios'\n     order by ordinal_position`\n  );\n  console.log('PORTFOLIOS_COLUMNS', JSON.stringify(res.rows));\n  await pool.end();\n} catch (e) {\n  console.error('PORTFOLIOS_COLUMNS_ERROR', e && e.message ? e.message : String(e));\n  try { await pool.end(); } catch {}\n  process.exit(1);\n}\n"
+      ]
+    }
+  ]
+}
+

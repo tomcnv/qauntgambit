@@ -1,0 +1,65 @@
+{
+  "gate_a_net_economics": {
+    "aggregate_net_pnl": -1010.296772,
+    "pass": false,
+    "positive_symbols": [],
+    "rule": ">=0 net in at least 2 symbols and aggregate >=0",
+    "symbol_net": {
+      "BTCUSDT": -680.416595,
+      "ETHUSDT": -160.962286,
+      "SOLUSDT": -168.917891
+    }
+  },
+  "gate_b_cost_realism": {
+    "pass": true,
+    "rule": "median(realized_cost_bps - expected_cost_bps) <= 3 bps per symbol (>=5 matched pairs)",
+    "symbols": {
+      "BTCUSDT": {
+        "matched_pairs": 25,
+        "median_cost_error_bps": -7.572163,
+        "status": "pass"
+      },
+      "ETHUSDT": {
+        "matched_pairs": 37,
+        "median_cost_error_bps": -8.969743,
+        "status": "pass"
+      },
+      "SOLUSDT": {
+        "matched_pairs": 30,
+        "median_cost_error_bps": -7.630324,
+        "status": "pass"
+      }
+    }
+  },
+  "gate_c_churn": {
+    "active_symbols": [
+      "BTCUSDT",
+      "ETHUSDT",
+      "SOLUSDT"
+    ],
+    "pass": false,
+    "rule": "canceled-to-filled ratio <= 3:1 on active symbols",
+    "symbols": {
+      "BTCUSDT": {
+        "canceled_to_filled_ratio": 1.1469,
+        "status": "pass"
+      },
+      "ETHUSDT": {
+        "canceled_to_filled_ratio": 4.6522,
+        "status": "fail"
+      },
+      "SOLUSDT": {
+        "canceled_to_filled_ratio": 4.8636,
+        "status": "fail"
+      }
+    }
+  },
+  "gate_d_exit_quality": {
+    "forced_close_rate_pct": 74.4186,
+    "pass": false,
+    "rule": "forced/safety exits < 10% of closes"
+  },
+  "next_action": "Execution-first fixes: reduce cancel/repost churn and forced exits before any signal threshold tuning.",
+  "overall_pass": false,
+  "recommended_ladder_step": 1
+}

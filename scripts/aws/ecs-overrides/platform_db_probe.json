@@ -1,0 +1,14 @@
+{
+  "containerOverrides": [
+    {
+      "name": "core-api",
+      "command": [
+        "node",
+        "--input-type=module",
+        "-e",
+        "import pool from './deeptrader-backend/config/database.js';\n\nconst tables = ['users','exchange_accounts','exchange_policies','bot_instances','bot_exchange_configs'];\n\ntry {\n  const meta = await pool.query('select current_database() as db, now() as now');\n  console.log('platform_db', meta.rows[0]);\n\n  for (const t of tables) {\n    const reg = await pool.query(\"select to_regclass('public.'||$1) as r\", [t]);\n    const r = reg.rows[0].r;\n    if (!r) {\n      console.log('table', t, 'MISSING');\n      continue;\n    }\n    const n = await pool.query(`select count(1)::bigint as n from ${t}`);\n    console.log('table', t, 'rows', n.rows[0].n);\n  }\n\n  await pool.end();\n  console.log('OK');\n} catch (e) {\n  console.error('PLATFORM_DB_PROBE_ERROR', e && e.message ? e.message : String(e));\n  try { await pool.end(); } catch {}\n  process.exit(1);\n}\n"
+      ]
+    }
+  ]
+}
+

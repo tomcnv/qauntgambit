@@ -1,0 +1,2129 @@
+{
+  "closes": {
+    "buckets_15m": [
+      {
+        "bucket_start_utc": "2026-02-16T00:30:00+00:00",
+        "close_count": 2,
+        "forced_close_count": 2,
+        "sum_fees_usd": 3.416091,
+        "sum_gross_pnl": -2.612107,
+        "sum_net_pnl": -6.028198,
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T01:00:00+00:00",
+        "close_count": 3,
+        "forced_close_count": 3,
+        "sum_fees_usd": 4.662222,
+        "sum_gross_pnl": -0.786503,
+        "sum_net_pnl": -5.448725,
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T01:00:00+00:00",
+        "close_count": 3,
+        "forced_close_count": 3,
+        "sum_fees_usd": 12.344216,
+        "sum_gross_pnl": -41.141626,
+        "sum_net_pnl": -53.485841,
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T02:15:00+00:00",
+        "close_count": 3,
+        "forced_close_count": 3,
+        "sum_fees_usd": 5.365509,
+        "sum_gross_pnl": -10.909849,
+        "sum_net_pnl": -16.275358,
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T03:00:00+00:00",
+        "close_count": 2,
+        "forced_close_count": 2,
+        "sum_fees_usd": 4.30606,
+        "sum_gross_pnl": 4.857644,
+        "sum_net_pnl": 0.551584,
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T03:15:00+00:00",
+        "close_count": 2,
+        "forced_close_count": 2,
+        "sum_fees_usd": 3.868484,
+        "sum_gross_pnl": -2.935584,
+        "sum_net_pnl": -6.804068,
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T04:00:00+00:00",
+        "close_count": 3,
+        "forced_close_count": 1,
+        "sum_fees_usd": 6.912477,
+        "sum_gross_pnl": 13.923108,
+        "sum_net_pnl": 7.010631,
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T04:30:00+00:00",
+        "close_count": 27,
+        "forced_close_count": 15,
+        "sum_fees_usd": 219.300742,
+        "sum_gross_pnl": -16.759455,
+        "sum_net_pnl": -236.060197,
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T04:30:00+00:00",
+        "close_count": 26,
+        "forced_close_count": 19,
+        "sum_fees_usd": 183.484531,
+        "sum_gross_pnl": -30.475299,
+        "sum_net_pnl": -213.95983,
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T04:30:00+00:00",
+        "close_count": 25,
+        "forced_close_count": 19,
+        "sum_fees_usd": 152.689879,
+        "sum_gross_pnl": 39.493459,
+        "sum_net_pnl": -113.196419,
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T04:45:00+00:00",
+        "close_count": 3,
+        "forced_close_count": 3,
+        "sum_fees_usd": 9.768805,
+        "sum_gross_pnl": -57.151366,
+        "sum_net_pnl": -66.920171,
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T05:00:00+00:00",
+        "close_count": 2,
+        "forced_close_count": 1,
+        "sum_fees_usd": 9.97002,
+        "sum_gross_pnl": 21.469741,
+        "sum_net_pnl": 11.499721,
+        "symbol": "ETHUSDT"
+      }
+    ],
+    "forced_close_rate_pct": 72.2772,
+    "forced_close_rows": 73,
+    "symbol_summary": {
+      "BTCUSDT": {
+        "avg_net_pnl": -8.050297,
+        "close_count": 30,
+        "sum_fees_usd": 223.962964,
+        "sum_gross_pnl": -17.545958,
+        "sum_net_pnl": -241.508922,
+        "top_close_reasons": {
+          "breakeven_stop_hit": 6,
+          "exchange_reconcile": 8,
+          "max_age_exceeded": 10,
+          "position_close": 6
+        }
+      },
+      "ETHUSDT": {
+        "avg_net_pnl": -6.24368,
+        "close_count": 37,
+        "sum_fees_usd": 210.410696,
+        "sum_gross_pnl": -20.605454,
+        "sum_net_pnl": -231.016149,
+        "top_close_reasons": {
+          "breakeven_stop_hit": 3,
+          "exchange_reconcile": 12,
+          "execution_update": 1,
+          "max_age_exceeded": 17,
+          "position_close": 4
+        }
+      },
+      "SOLUSDT": {
+        "avg_net_pnl": -6.664465,
+        "close_count": 34,
+        "sum_fees_usd": 181.715377,
+        "sum_gross_pnl": -44.876425,
+        "sum_net_pnl": -226.591801,
+        "top_close_reasons": {
+          "breakeven_stop_hit": 4,
+          "exchange_reconcile": 10,
+          "execution_update": 2,
+          "max_age_exceeded": 14,
+          "position_close": 2,
+          "safety_exit: data_stale_while_in_position": 2
+        }
+      }
+    },
+    "total_close_rows": 101
+  },
+  "decisions": {
+    "buckets_15m": [
+      {
+        "accepted": 1833,
+        "bucket_start_utc": "2026-02-16T00:15:00+00:00",
+        "other": 1833,
+        "rejected": 908,
+        "rejection_reasons": {
+          "model_direction_mismatch": 178,
+          "no_signal": 466,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 66,
+          "orderflow_veto_short:imb_5s=0.52>0.50": 4,
+          "prediction_low_confidence": 194
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 797,
+        "bucket_start_utc": "2026-02-16T00:15:00+00:00",
+        "other": 797,
+        "rejected": 3832,
+        "rejection_reasons": {
+          "cost_data_quality": 16,
+          "model_direction_mismatch": 368,
+          "no_bid": 2,
+          "no_signal": 2994,
+          "prediction_low_confidence": 452
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 2322,
+        "bucket_start_utc": "2026-02-16T00:15:00+00:00",
+        "other": 2322,
+        "rejected": 152,
+        "rejection_reasons": {
+          "cost_data_quality": 10,
+          "no_signal": 142
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 5516,
+        "bucket_start_utc": "2026-02-16T00:30:00+00:00",
+        "other": 5516,
+        "rejected": 1114,
+        "rejection_reasons": {
+          "model_direction_mismatch": 288,
+          "no_signal": 258,
+          "orderflow_veto_short:imb_5s=0.50>0.50": 2,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 2,
+          "prediction_low_confidence": 564
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 3622,
+        "bucket_start_utc": "2026-02-16T00:30:00+00:00",
+        "other": 3622,
+        "rejected": 4788,
+        "rejection_reasons": {
+          "model_direction_mismatch": 1806,
+          "no_signal": 1380,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 8,
+          "orderflow_veto_long:imb_5s=-0.53<-0.50": 12,
+          "orderflow_veto_long:imb_5s=-0.55<-0.50": 28,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 4,
+          "orderflow_veto_short:imb_5s=0.53>0.50": 2,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 12,
+          "orderflow_veto_short:imb_5s=0.55>0.50": 6,
+          "prediction_low_confidence": 1524
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 2292,
+        "bucket_start_utc": "2026-02-16T00:30:00+00:00",
+        "other": 2292,
+        "rejected": 6272,
+        "rejection_reasons": {
+          "no_signal": 6230,
+          "orderflow_veto_short:imb_5s=0.50>0.50": 6,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 2,
+          "orderflow_veto_short:imb_5s=0.52>0.50": 8,
+          "orderflow_veto_short:imb_5s=0.53>0.50": 8,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 16,
+          "orderflow_veto_short:imb_5s=0.55>0.50": 2
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 4720,
+        "bucket_start_utc": "2026-02-16T00:45:00+00:00",
+        "other": 4720,
+        "rejected": 2132,
+        "rejection_reasons": {
+          "model_direction_mismatch": 36,
+          "no_signal": 1610,
+          "orderflow_veto_short:imb_5s=0.50>0.50": 24,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 56,
+          "orderflow_veto_short:imb_5s=0.52>0.50": 2,
+          "orderflow_veto_short:imb_5s=0.53>0.50": 2,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 56,
+          "orderflow_veto_short:imb_5s=0.55>0.50": 30,
+          "prediction_blocked": 302,
+          "prediction_low_confidence": 14
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 3886,
+        "bucket_start_utc": "2026-02-16T00:45:00+00:00",
+        "other": 3886,
+        "rejected": 4180,
+        "rejection_reasons": {
+          "cost_data_quality": 18,
+          "model_direction_mismatch": 504,
+          "no_signal": 2006,
+          "orderflow_veto_short:imb_5s=0.52>0.50": 30,
+          "orderflow_veto_short:imb_5s=0.53>0.50": 20,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 64,
+          "orderflow_veto_short:imb_5s=0.55>0.50": 2,
+          "prediction_low_confidence": 1536
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 2737,
+        "bucket_start_utc": "2026-02-16T00:45:00+00:00",
+        "other": 2737,
+        "rejected": 4240,
+        "rejection_reasons": {
+          "no_signal": 3954,
+          "orderflow_veto_short:imb_5s=0.50>0.50": 6,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 34,
+          "orderflow_veto_short:imb_5s=0.53>0.50": 72,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 8,
+          "tradeability_veto:net_edge=-12.5bps<4.0bps": 8,
+          "tradeability_veto:net_edge=-13.1bps<4.0bps": 110,
+          "tradeability_veto:net_edge=-13.7bps<4.0bps": 18,
+          "tradeability_veto:net_edge=-14.9bps<4.0bps": 10,
+          "tradeability_veto:net_edge=-16.0bps<4.0bps": 12
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 4064,
+        "bucket_start_utc": "2026-02-16T01:00:00+00:00",
+        "other": 4064,
+        "rejected": 3182,
+        "rejection_reasons": {
+          "model_direction_mismatch": 396,
+          "no_signal": 2250,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 46,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 10,
+          "orderflow_veto_long:imb_5s=-0.53<-0.50": 16,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 14,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 8,
+          "orderflow_veto_short:imb_5s=0.52>0.50": 32,
+          "orderflow_veto_short:imb_5s=0.53>0.50": 60,
+          "prediction_low_confidence": 332
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 2228,
+        "bucket_start_utc": "2026-02-16T01:00:00+00:00",
+        "other": 2228,
+        "rejected": 7682,
+        "rejection_reasons": {
+          "model_direction_mismatch": 132,
+          "no_signal": 6242,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 8,
+          "orderflow_veto_short:imb_5s=0.55>0.50": 10,
+          "prediction_blocked": 30,
+          "prediction_low_confidence": 1260
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 1031,
+        "bucket_start_utc": "2026-02-16T01:00:00+00:00",
+        "other": 1031,
+        "rejected": 7182,
+        "rejection_reasons": {
+          "no_signal": 7086,
+          "orderflow_veto_short:imb_5s=0.53>0.50": 16,
+          "orderflow_veto_short:imb_5s=0.55>0.50": 4,
+          "prediction_blocked": 76
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 3289,
+        "bucket_start_utc": "2026-02-16T01:15:00+00:00",
+        "other": 3289,
+        "rejected": 4758,
+        "rejection_reasons": {
+          "model_direction_mismatch": 1470,
+          "no_signal": 2218,
+          "orderflow_veto_long:imb_5s=-0.50<-0.50": 22,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 48,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 106,
+          "orderflow_veto_long:imb_5s=-0.53<-0.50": 58,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 4,
+          "orderflow_veto_long:imb_5s=-0.55<-0.50": 8,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 2,
+          "prediction_low_confidence": 818
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 947,
+        "bucket_start_utc": "2026-02-16T01:15:00+00:00",
+        "other": 947,
+        "rejected": 9868,
+        "rejection_reasons": {
+          "model_direction_mismatch": 872,
+          "no_bid": 2,
+          "no_signal": 8126,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 24,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 12,
+          "orderflow_veto_long:imb_5s=-0.53<-0.50": 26,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 4,
+          "orderflow_veto_long:imb_5s=-0.55<-0.50": 6,
+          "prediction_blocked": 66,
+          "prediction_low_confidence": 730
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 1891,
+        "bucket_start_utc": "2026-02-16T01:15:00+00:00",
+        "other": 1891,
+        "rejected": 6178,
+        "rejection_reasons": {
+          "no_signal": 6064,
+          "prediction_blocked": 34,
+          "tradeability_veto:net_edge=-2.9bps<4.0bps": 4,
+          "tradeability_veto:net_edge=1.2bps<4.0bps": 76
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 915,
+        "bucket_start_utc": "2026-02-16T01:30:00+00:00",
+        "other": 915,
+        "rejected": 10226,
+        "rejection_reasons": {
+          "model_direction_mismatch": 1140,
+          "no_signal": 8736,
+          "orderflow_veto_long:imb_5s=-0.50<-0.50": 14,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 10,
+          "prediction_blocked": 18,
+          "prediction_low_confidence": 308
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 639,
+        "bucket_start_utc": "2026-02-16T01:30:00+00:00",
+        "other": 639,
+        "rejected": 11128,
+        "rejection_reasons": {
+          "model_direction_mismatch": 2082,
+          "no_signal": 7768,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 2,
+          "orderflow_veto_long:imb_5s=-0.53<-0.50": 26,
+          "orderflow_veto_long:imb_5s=-0.55<-0.50": 54,
+          "prediction_low_confidence": 1196
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 2982,
+        "bucket_start_utc": "2026-02-16T01:30:00+00:00",
+        "other": 2982,
+        "rejected": 3808,
+        "rejection_reasons": {
+          "no_signal": 3464,
+          "tradeability_veto:net_edge=-11.1bps<4.0bps": 4,
+          "tradeability_veto:net_edge=-12.2bps<4.0bps": 4,
+          "tradeability_veto:net_edge=-6.4bps<4.0bps": 2,
+          "tradeability_veto:net_edge=-7.6bps<4.0bps": 4,
+          "tradeability_veto:net_edge=-8.7bps<4.0bps": 12,
+          "tradeability_veto:net_edge=-9.9bps<4.0bps": 2,
+          "tradeability_veto:net_edge=1.2bps<4.0bps": 316
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 1156,
+        "bucket_start_utc": "2026-02-16T01:45:00+00:00",
+        "other": 1156,
+        "rejected": 8634,
+        "rejection_reasons": {
+          "model_direction_mismatch": 148,
+          "no_signal": 8014,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 4,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 14,
+          "orderflow_veto_long:imb_5s=-0.53<-0.50": 6,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 32,
+          "prediction_blocked": 8,
+          "prediction_low_confidence": 408
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 1025,
+        "bucket_start_utc": "2026-02-16T01:45:00+00:00",
+        "other": 1025,
+        "rejected": 8850,
+        "rejection_reasons": {
+          "model_direction_mismatch": 28,
+          "no_signal": 7864,
+          "prediction_blocked": 28,
+          "prediction_low_confidence": 930
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 736,
+        "bucket_start_utc": "2026-02-16T01:45:00+00:00",
+        "other": 736,
+        "rejected": 6868,
+        "rejection_reasons": {
+          "no_signal": 6794,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 18,
+          "orderflow_veto_long:imb_5s=-0.55<-0.50": 2,
+          "tradeability_veto:net_edge=-0.9bps<4.0bps": 4,
+          "tradeability_veto:net_edge=-11.0bps<4.0bps": 6,
+          "tradeability_veto:net_edge=-2.0bps<4.0bps": 6,
+          "tradeability_veto:net_edge=-3.2bps<4.0bps": 18,
+          "tradeability_veto:net_edge=-4.4bps<4.0bps": 14,
+          "tradeability_veto:net_edge=-5.6bps<4.0bps": 4,
+          "tradeability_veto:net_edge=-9.8bps<4.0bps": 2
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 1016,
+        "bucket_start_utc": "2026-02-16T02:00:00+00:00",
+        "other": 1016,
+        "rejected": 9272,
+        "rejection_reasons": {
+          "model_direction_mismatch": 292,
+          "no_signal": 8656,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 2,
+          "prediction_blocked": 6,
+          "prediction_low_confidence": 316
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 1001,
+        "bucket_start_utc": "2026-02-16T02:00:00+00:00",
+        "other": 1001,
+        "rejected": 8853,
+        "rejection_reasons": {
+          "model_direction_mismatch": 4,
+          "no_signal": 7991,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 10,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 8,
+          "orderflow_veto_long:imb_5s=-0.55<-0.50": 18,
+          "prediction_blocked": 74,
+          "prediction_low_confidence": 748
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 1896,
+        "bucket_start_utc": "2026-02-16T02:00:00+00:00",
+        "other": 1896,
+        "rejected": 4682,
+        "rejection_reasons": {
+          "no_signal": 4126,
+          "prediction_blocked": 46,
+          "tradeability_veto:net_edge=-11.0bps<4.0bps": 6,
+          "tradeability_veto:net_edge=-3.2bps<4.0bps": 150,
+          "tradeability_veto:net_edge=-4.4bps<4.0bps": 204,
+          "tradeability_veto:net_edge=-6.3bps<4.0bps": 2,
+          "tradeability_veto:net_edge=-6.7bps<4.0bps": 140,
+          "tradeability_veto:net_edge=-7.5bps<4.0bps": 4,
+          "tradeability_veto:net_edge=-9.8bps<4.0bps": 4
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 112,
+        "bucket_start_utc": "2026-02-16T02:15:00+00:00",
+        "other": 112,
+        "rejected": 12036,
+        "rejection_reasons": {
+          "cost_data_quality": 4,
+          "no_signal": 10632,
+          "prediction_low_confidence": 1400
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 322,
+        "bucket_start_utc": "2026-02-16T02:15:00+00:00",
+        "other": 322,
+        "rejected": 11763,
+        "rejection_reasons": {
+          "model_direction_mismatch": 246,
+          "no_signal": 9799,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 70,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 18,
+          "orderflow_veto_long:imb_5s=-0.53<-0.50": 74,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 44,
+          "prediction_low_confidence": 1248,
+          "tradeability_veto:net_edge=0.1bps<4.0bps": 20,
+          "tradeability_veto:net_edge=0.2bps<4.0bps": 162,
+          "tradeability_veto:net_edge=1.0bps<4.0bps": 48
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 1771,
+        "bucket_start_utc": "2026-02-16T02:15:00+00:00",
+        "other": 1771,
+        "rejected": 5640,
+        "rejection_reasons": {
+          "cost_data_quality": 4,
+          "no_signal": 5632,
+          "prediction_blocked": 2,
+          "tradeability_veto:net_edge=-11.0bps<4.0bps": 2
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 1487,
+        "bucket_start_utc": "2026-02-16T02:30:00+00:00",
+        "other": 1487,
+        "rejected": 9648,
+        "rejection_reasons": {
+          "model_direction_mismatch": 542,
+          "no_signal": 8432,
+          "orderflow_veto_long:imb_5s=-0.50<-0.50": 10,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 4,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 4,
+          "orderflow_veto_long:imb_5s=-0.55<-0.50": 2,
+          "prediction_blocked": 228,
+          "prediction_low_confidence": 426
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 3873,
+        "bucket_start_utc": "2026-02-16T02:30:00+00:00",
+        "other": 3873,
+        "rejected": 4026,
+        "rejection_reasons": {
+          "model_direction_mismatch": 628,
+          "no_signal": 1640,
+          "prediction_low_confidence": 1758
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 485,
+        "bucket_start_utc": "2026-02-16T02:30:00+00:00",
+        "other": 485,
+        "rejected": 8830,
+        "rejection_reasons": {
+          "no_signal": 8772,
+          "tradeability_veto:net_edge=-10.8bps<4.0bps": 4,
+          "tradeability_veto:net_edge=-12.0bps<4.0bps": 2,
+          "tradeability_veto:net_edge=-12.1bps<4.0bps": 14,
+          "tradeability_veto:net_edge=-13.3bps<4.0bps": 8,
+          "tradeability_veto:net_edge=-17.8bps<4.0bps": 2,
+          "tradeability_veto:net_edge=-2.8bps<4.0bps": 20,
+          "tradeability_veto:net_edge=-3.9bps<4.0bps": 6,
+          "tradeability_veto:net_edge=-8.5bps<4.0bps": 2
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 1290,
+        "bucket_start_utc": "2026-02-16T02:45:00+00:00",
+        "other": 1290,
+        "rejected": 10302,
+        "rejection_reasons": {
+          "correlation_blocked": 466,
+          "model_direction_mismatch": 616,
+          "no_signal": 8738,
+          "prediction_low_confidence": 482
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 3291,
+        "bucket_start_utc": "2026-02-16T02:45:00+00:00",
+        "other": 3291,
+        "rejected": 5424,
+        "rejection_reasons": {
+          "model_direction_mismatch": 1348,
+          "no_signal": 2472,
+          "orderflow_veto_long:imb_5s=-0.50<-0.50": 74,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 132,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 92,
+          "orderflow_veto_long:imb_5s=-0.53<-0.50": 134,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 106,
+          "orderflow_veto_long:imb_5s=-0.55<-0.50": 4,
+          "prediction_low_confidence": 1062
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 36,
+        "bucket_start_utc": "2026-02-16T02:45:00+00:00",
+        "other": 36,
+        "rejected": 9930,
+        "rejection_reasons": {
+          "cost_data_quality": 18,
+          "no_signal": 9896,
+          "tradeability_veto:net_edge=-11.0bps<4.0bps": 6,
+          "tradeability_veto:net_edge=-12.1bps<4.0bps": 2,
+          "tradeability_veto:net_edge=-13.3bps<4.0bps": 4,
+          "tradeability_veto:net_edge=-8.6bps<4.0bps": 2,
+          "tradeability_veto:net_edge=-9.8bps<4.0bps": 2
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 4796,
+        "bucket_start_utc": "2026-02-16T03:00:00+00:00",
+        "other": 4796,
+        "rejected": 3682,
+        "rejection_reasons": {
+          "correlation_blocked": 832,
+          "model_direction_mismatch": 256,
+          "no_signal": 2094,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 34,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 24,
+          "orderflow_veto_long:imb_5s=-0.53<-0.50": 38,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 118,
+          "orderflow_veto_long:imb_5s=-0.55<-0.50": 22,
+          "prediction_blocked": 170,
+          "prediction_low_confidence": 68
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 878,
+        "bucket_start_utc": "2026-02-16T03:00:00+00:00",
+        "other": 878,
+        "rejected": 9522,
+        "rejection_reasons": {
+          "model_direction_mismatch": 496,
+          "no_signal": 7966,
+          "orderflow_veto_long:imb_5s=-0.53<-0.50": 2,
+          "prediction_low_confidence": 1058
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 1558,
+        "bucket_start_utc": "2026-02-16T03:00:00+00:00",
+        "other": 1558,
+        "rejected": 5976,
+        "rejection_reasons": {
+          "correlation_blocked": 530,
+          "no_signal": 5008,
+          "orderflow_veto_long:imb_5s=-0.50<-0.50": 2,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 12,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 6,
+          "orderflow_veto_long:imb_5s=-0.53<-0.50": 10,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 8,
+          "prediction_blocked": 400
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 1010,
+        "bucket_start_utc": "2026-02-16T03:15:00+00:00",
+        "other": 1011,
+        "rejected": 9778,
+        "rejection_reasons": {
+          "correlation_blocked": 512,
+          "cost_data_quality": 120,
+          "no_signal": 8886,
+          "prediction_blocked": 84,
+          "prediction_low_confidence": 176
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 318,
+        "bucket_start_utc": "2026-02-16T03:15:00+00:00",
+        "other": 318,
+        "rejected": 11318,
+        "rejection_reasons": {
+          "cost_data_quality": 40,
+          "model_direction_mismatch": 128,
+          "no_bid": 8,
+          "no_signal": 10422,
+          "orderflow_veto_long:imb_5s=-0.50<-0.50": 6,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 36,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 36,
+          "prediction_blocked": 80,
+          "prediction_low_confidence": 562
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 499,
+        "bucket_start_utc": "2026-02-16T03:15:00+00:00",
+        "other": 499,
+        "rejected": 8260,
+        "rejection_reasons": {
+          "correlation_blocked": 750,
+          "cost_data_quality": 114,
+          "no_signal": 7170,
+          "prediction_blocked": 226
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 25,
+        "bucket_start_utc": "2026-02-16T03:30:00+00:00",
+        "other": 25,
+        "rejected": 13524,
+        "rejection_reasons": {
+          "EV_BELOW_MIN": 762,
+          "P_BELOW_PMIN": 7106,
+          "cost_data_quality": 156,
+          "model_direction_mismatch": 228,
+          "no_signal": 4150,
+          "prediction_blocked": 248,
+          "prediction_low_confidence": 874
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 87,
+        "bucket_start_utc": "2026-02-16T03:30:00+00:00",
+        "other": 87,
+        "rejected": 10580,
+        "rejection_reasons": {
+          "EV_BELOW_MIN": 244,
+          "P_BELOW_PMIN": 7064,
+          "cost_data_quality": 156,
+          "model_direction_mismatch": 370,
+          "no_bid": 2,
+          "no_signal": 1960,
+          "prediction_blocked": 16,
+          "prediction_low_confidence": 768
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 122,
+        "bucket_start_utc": "2026-02-16T03:30:00+00:00",
+        "other": 122,
+        "rejected": 8132,
+        "rejection_reasons": {
+          "EV_BELOW_MIN": 330,
+          "P_BELOW_PMIN": 5274,
+          "cost_data_quality": 38,
+          "no_signal": 2480,
+          "prediction_blocked": 10
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 141,
+        "bucket_start_utc": "2026-02-16T03:45:00+00:00",
+        "other": 141,
+        "rejected": 11726,
+        "rejection_reasons": {
+          "EV_BELOW_MIN": 2234,
+          "P_BELOW_PMIN": 6630,
+          "cost_data_quality": 42,
+          "model_direction_mismatch": 444,
+          "no_signal": 2110,
+          "orderflow_veto_short:imb_5s=0.50>0.50": 6,
+          "orderflow_veto_short:imb_5s=0.52>0.50": 2,
+          "orderflow_veto_short:imb_5s=0.53>0.50": 10,
+          "prediction_blocked": 24,
+          "prediction_low_confidence": 224
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 60,
+        "bucket_start_utc": "2026-02-16T03:45:00+00:00",
+        "other": 60,
+        "rejected": 9728,
+        "rejection_reasons": {
+          "EV_BELOW_MIN": 3198,
+          "P_BELOW_PMIN": 720,
+          "cost_data_quality": 2,
+          "model_direction_mismatch": 150,
+          "no_signal": 5078,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 18,
+          "orderflow_veto_short:imb_5s=0.52>0.50": 40,
+          "orderflow_veto_short:imb_5s=0.53>0.50": 2,
+          "prediction_low_confidence": 520
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 244,
+        "bucket_start_utc": "2026-02-16T03:45:00+00:00",
+        "other": 244,
+        "rejected": 7694,
+        "rejection_reasons": {
+          "EV_BELOW_MIN": 442,
+          "P_BELOW_PMIN": 6444,
+          "cost_data_quality": 2,
+          "no_signal": 784,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 6,
+          "orderflow_veto_long:imb_5s=-0.55<-0.50": 10,
+          "prediction_blocked": 6
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 1425,
+        "bucket_start_utc": "2026-02-16T04:00:00+00:00",
+        "other": 1425,
+        "rejected": 9822,
+        "rejection_reasons": {
+          "EV_BELOW_MIN": 2164,
+          "P_BELOW_PMIN": 3554,
+          "cost_data_quality": 104,
+          "model_direction_mismatch": 32,
+          "no_signal": 3186,
+          "orderflow_veto_short:imb_5s=0.61>0.50": 60,
+          "orderflow_veto_short:imb_5s=0.64>0.50": 28,
+          "orderflow_veto_short:imb_5s=0.65>0.50": 20,
+          "prediction_blocked": 84,
+          "prediction_low_confidence": 482
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 967,
+        "bucket_start_utc": "2026-02-16T04:00:00+00:00",
+        "other": 967,
+        "rejected": 8998,
+        "rejection_reasons": {
+          "EV_BELOW_MIN": 50,
+          "P_BELOW_PMIN": 3331,
+          "cost_data_quality": 80,
+          "model_direction_mismatch": 2442,
+          "no_signal": 2479,
+          "orderflow_veto_short:imb_5s=0.55>0.50": 38,
+          "orderflow_veto_short:imb_5s=0.56>0.50": 94,
+          "orderflow_veto_short:imb_5s=0.74>0.50": 66,
+          "orderflow_veto_short:imb_5s=0.79>0.50": 38,
+          "prediction_blocked": 180
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 1152,
+        "bucket_start_utc": "2026-02-16T04:00:00+00:00",
+        "other": 1152,
+        "rejected": 6209,
+        "rejection_reasons": {
+          "EV_BELOW_MIN": 678,
+          "P_BELOW_PMIN": 1321,
+          "cost_data_quality": 114,
+          "no_signal": 2852,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 2,
+          "orderflow_veto_short:imb_5s=0.53>0.50": 2,
+          "prediction_blocked": 1240
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 3232,
+        "bucket_start_utc": "2026-02-16T04:15:00+00:00",
+        "other": 3232,
+        "rejected": 6088,
+        "rejection_reasons": {
+          "no_signal": 3902,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 110,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 196,
+          "orderflow_veto_short:imb_5s=0.55>0.50": 156,
+          "orderflow_veto_short:imb_5s=0.56>0.50": 140,
+          "orderflow_veto_short:imb_5s=0.58>0.50": 70,
+          "orderflow_veto_short:imb_5s=0.60>0.50": 164,
+          "orderflow_veto_short:imb_5s=0.67>0.50": 98,
+          "orderflow_veto_short:imb_5s=0.72>0.50": 84,
+          "prediction_low_confidence": 454
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 1468,
+        "bucket_start_utc": "2026-02-16T04:15:00+00:00",
+        "other": 1468,
+        "rejected": 8282,
+        "rejection_reasons": {
+          "no_signal": 6788,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 72,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 98,
+          "orderflow_veto_short:imb_5s=0.57>0.50": 82,
+          "orderflow_veto_short:imb_5s=0.58>0.50": 88,
+          "orderflow_veto_short:imb_5s=0.59>0.50": 74,
+          "orderflow_veto_short:imb_5s=0.61>0.50": 72,
+          "orderflow_veto_short:imb_5s=0.73>0.50": 66,
+          "orderflow_veto_short:imb_5s=0.74>0.50": 76,
+          "prediction_low_confidence": 612
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 2756,
+        "bucket_start_utc": "2026-02-16T04:15:00+00:00",
+        "other": 2756,
+        "rejected": 3258,
+        "rejection_reasons": {
+          "P_BELOW_PMIN": 112,
+          "cost_data_quality": 18,
+          "no_signal": 2618,
+          "orderflow_veto_short:imb_5s=0.50>0.50": 54,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 140,
+          "orderflow_veto_short:imb_5s=0.52>0.50": 56,
+          "orderflow_veto_short:imb_5s=0.53>0.50": 50,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 180,
+          "orderflow_veto_short:imb_5s=0.55>0.50": 24,
+          "prediction_blocked": 6
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 4332,
+        "bucket_start_utc": "2026-02-16T04:30:00+00:00",
+        "other": 4333,
+        "rejected": 3986,
+        "rejection_reasons": {
+          "EV_BELOW_MIN": 84,
+          "P_BELOW_PMIN": 20,
+          "cost_data_quality": 36,
+          "no_signal": 3358,
+          "orderflow_veto_short:imb_5s=0.61>0.50": 8,
+          "orderflow_veto_short:imb_5s=0.69>0.50": 8,
+          "orderflow_veto_short:imb_5s=0.74>0.50": 8,
+          "orderflow_veto_short:imb_5s=0.78>0.50": 34,
+          "orderflow_veto_short:imb_5s=0.79>0.50": 24,
+          "prediction_low_confidence": 366
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 2538,
+        "bucket_start_utc": "2026-02-16T04:30:00+00:00",
+        "other": 2538,
+        "rejected": 6327,
+        "rejection_reasons": {
+          "P_BELOW_PMIN": 104,
+          "cost_data_quality": 84,
+          "no_signal": 4521,
+          "orderflow_veto_short:imb_5s=0.50>0.50": 40,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 32,
+          "orderflow_veto_short:imb_5s=0.55>0.50": 88,
+          "orderflow_veto_short:imb_5s=0.57>0.50": 40,
+          "orderflow_veto_short:imb_5s=0.58>0.50": 48,
+          "orderflow_veto_short:imb_5s=0.61>0.50": 68,
+          "prediction_low_confidence": 1146
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 2391,
+        "bucket_start_utc": "2026-02-16T04:30:00+00:00",
+        "other": 2391,
+        "rejected": 3700,
+        "rejection_reasons": {
+          "EV_BELOW_MIN": 10,
+          "P_BELOW_PMIN": 1078,
+          "cost_data_quality": 44,
+          "no_bid": 2,
+          "no_signal": 2170,
+          "orderflow_veto_short:imb_5s=0.50>0.50": 102,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 130,
+          "orderflow_veto_short:imb_5s=0.52>0.50": 38,
+          "orderflow_veto_short:imb_5s=0.53>0.50": 110,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 16
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 467,
+        "bucket_start_utc": "2026-02-16T04:45:00+00:00",
+        "other": 467,
+        "rejected": 12331,
+        "rejection_reasons": {
+          "no_signal": 11861,
+          "orderflow_veto_short:imb_5s=0.58>0.50": 22,
+          "orderflow_veto_short:imb_5s=0.60>0.50": 22,
+          "orderflow_veto_short:imb_5s=0.64>0.50": 8,
+          "orderflow_veto_short:imb_5s=0.65>0.50": 30,
+          "orderflow_veto_short:imb_5s=0.66>0.50": 36,
+          "prediction_low_confidence": 352
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 3293,
+        "bucket_start_utc": "2026-02-16T04:45:00+00:00",
+        "other": 3293,
+        "rejected": 5009,
+        "rejection_reasons": {
+          "no_signal": 1760,
+          "orderflow_veto_short:imb_5s=0.52>0.50": 90,
+          "orderflow_veto_short:imb_5s=0.61>0.50": 172,
+          "orderflow_veto_short:imb_5s=0.66>0.50": 90,
+          "orderflow_veto_short:imb_5s=0.70>0.50": 112,
+          "orderflow_veto_short:imb_5s=0.71>0.50": 124,
+          "orderflow_veto_short:imb_5s=0.73>0.50": 206,
+          "orderflow_veto_short:imb_5s=0.75>0.50": 188,
+          "orderflow_veto_short:imb_5s=0.76>0.50": 94,
+          "prediction_low_confidence": 1397
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 1643,
+        "bucket_start_utc": "2026-02-16T04:45:00+00:00",
+        "other": 1643,
+        "rejected": 5449,
+        "rejection_reasons": {
+          "P_BELOW_PMIN": 38,
+          "cost_data_quality": 22,
+          "no_signal": 5389
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 1075,
+        "bucket_start_utc": "2026-02-16T05:00:00+00:00",
+        "other": 1075,
+        "rejected": 10101,
+        "rejection_reasons": {
+          "EV_BELOW_MIN": 74,
+          "P_BELOW_PMIN": 760,
+          "no_signal": 8725,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 10,
+          "orderflow_veto_long:imb_5s=-0.53<-0.50": 4,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 4,
+          "orderflow_veto_long:imb_5s=-0.67<-0.50": 4,
+          "orderflow_veto_long:imb_5s=-0.73<-0.50": 8,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 4,
+          "prediction_low_confidence": 504
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 1714,
+        "bucket_start_utc": "2026-02-16T05:00:00+00:00",
+        "other": 1714,
+        "rejected": 8265,
+        "rejection_reasons": {
+          "P_BELOW_PMIN": 1100,
+          "no_signal": 5015,
+          "orderflow_veto_short:imb_5s=0.50>0.50": 100,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 70,
+          "orderflow_veto_short:imb_5s=0.53>0.50": 94,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 88,
+          "orderflow_veto_short:imb_5s=0.55>0.50": 58,
+          "orderflow_veto_short:imb_5s=0.59>0.50": 72,
+          "orderflow_veto_short:imb_5s=0.69>0.50": 78,
+          "prediction_low_confidence": 1334
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 586,
+        "bucket_start_utc": "2026-02-16T05:00:00+00:00",
+        "other": 586,
+        "rejected": 8490,
+        "rejection_reasons": {
+          "P_BELOW_PMIN": 1270,
+          "no_signal": 7028,
+          "orderflow_veto_long:imb_5s=-0.50<-0.50": 2,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 2,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 6,
+          "orderflow_veto_long:imb_5s=-0.55<-0.50": 6,
+          "prediction_blocked": 176
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 1906,
+        "bucket_start_utc": "2026-02-16T05:15:00+00:00",
+        "other": 1906,
+        "rejected": 3684,
+        "rejection_reasons": {
+          "P_BELOW_PMIN": 108,
+          "cost_data_quality": 396,
+          "no_signal": 1176,
+          "orderflow_veto_short:imb_5s=0.57>0.50": 64,
+          "orderflow_veto_short:imb_5s=0.60>0.50": 46,
+          "orderflow_veto_short:imb_5s=0.66>0.50": 82,
+          "orderflow_veto_short:imb_5s=0.69>0.50": 84,
+          "orderflow_veto_short:imb_5s=0.70>0.50": 78,
+          "orderflow_veto_short:imb_5s=0.72>0.50": 60,
+          "prediction_low_confidence": 1138
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 2828,
+        "bucket_start_utc": "2026-02-16T05:15:00+00:00",
+        "other": 2828,
+        "rejected": 2293,
+        "rejection_reasons": {
+          "P_BELOW_PMIN": 64,
+          "cost_data_quality": 314,
+          "no_signal": 761,
+          "orderflow_veto_long:imb_5s=-0.50<-0.50": 2,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 18,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 10,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 4,
+          "orderflow_veto_long:imb_5s=-0.68<-0.50": 8,
+          "orderflow_veto_long:imb_5s=-0.73<-0.50": 2,
+          "prediction_low_confidence": 1108
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 846,
+        "bucket_start_utc": "2026-02-16T05:15:00+00:00",
+        "other": 846,
+        "rejected": 4914,
+        "rejection_reasons": {
+          "P_BELOW_PMIN": 560,
+          "no_signal": 4338,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 8,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 8
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 2991,
+        "bucket_start_utc": "2026-02-16T05:30:00+00:00",
+        "other": 2992,
+        "rejected": 4032,
+        "rejection_reasons": {
+          "P_BELOW_PMIN": 112,
+          "cost_data_quality": 1630,
+          "no_signal": 1234,
+          "orderflow_veto_short:imb_5s=0.62>0.50": 38,
+          "orderflow_veto_short:imb_5s=0.76>0.50": 54,
+          "orderflow_veto_short:imb_5s=0.77>0.50": 84,
+          "orderflow_veto_short:imb_5s=0.78>0.50": 74,
+          "orderflow_veto_short:imb_5s=0.79>0.50": 92,
+          "prediction_blocked": 142,
+          "prediction_low_confidence": 54
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 2978,
+        "bucket_start_utc": "2026-02-16T05:30:00+00:00",
+        "other": 2978,
+        "rejected": 4002,
+        "rejection_reasons": {
+          "cost_data_quality": 1508,
+          "no_signal": 1048,
+          "orderflow_veto_long:imb_5s=-0.62<-0.50": 36,
+          "orderflow_veto_long:imb_5s=-0.63<-0.50": 34,
+          "orderflow_veto_long:imb_5s=-0.65<-0.50": 34,
+          "orderflow_veto_long:imb_5s=-0.69<-0.50": 50,
+          "orderflow_veto_short:imb_5s=0.56>0.50": 54,
+          "orderflow_veto_short:imb_5s=0.62>0.50": 32,
+          "orderflow_veto_short:imb_5s=0.66>0.50": 44,
+          "prediction_low_confidence": 850
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 939,
+        "bucket_start_utc": "2026-02-16T05:30:00+00:00",
+        "other": 939,
+        "rejected": 6428,
+        "rejection_reasons": {
+          "P_BELOW_PMIN": 74,
+          "book_gap_red:8094ms>8000ms": 2,
+          "book_gap_red:8305ms>8000ms": 2,
+          "cost_data_quality": 608,
+          "no_bid": 6,
+          "no_signal": 5736
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 2406,
+        "bucket_start_utc": "2026-02-16T05:45:00+00:00",
+        "other": 2406,
+        "rejected": 5794,
+        "rejection_reasons": {
+          "no_signal": 3416,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 68,
+          "orderflow_veto_long:imb_5s=-0.55<-0.50": 98,
+          "orderflow_veto_long:imb_5s=-0.77<-0.50": 48,
+          "orderflow_veto_long:imb_5s=-0.78<-0.50": 84,
+          "orderflow_veto_long:imb_5s=-0.79<-0.50": 154,
+          "orderflow_veto_short:imb_5s=0.61>0.50": 70,
+          "orderflow_veto_short:imb_5s=0.65>0.50": 52,
+          "orderflow_veto_short:imb_5s=0.66>0.50": 60,
+          "prediction_low_confidence": 1068
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 649,
+        "bucket_start_utc": "2026-02-16T05:45:00+00:00",
+        "other": 649,
+        "rejected": 9086,
+        "rejection_reasons": {
+          "P_BELOW_PMIN": 58,
+          "no_signal": 7620,
+          "orderflow_veto_short:imb_5s=0.50>0.50": 110,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 72,
+          "orderflow_veto_short:imb_5s=0.52>0.50": 170,
+          "orderflow_veto_short:imb_5s=0.53>0.50": 60,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 62,
+          "orderflow_veto_short:imb_5s=0.58>0.50": 108,
+          "orderflow_veto_short:imb_5s=0.77>0.50": 60,
+          "prediction_low_confidence": 248
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 1423,
+        "bucket_start_utc": "2026-02-16T05:45:00+00:00",
+        "other": 1423,
+        "rejected": 6954,
+        "rejection_reasons": {
+          "cost_data_quality": 8,
+          "no_signal": 6936,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 2,
+          "orderflow_veto_long:imb_5s=-0.53<-0.50": 4,
+          "prediction_blocked": 4
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 3787,
+        "bucket_start_utc": "2026-02-16T06:00:00+00:00",
+        "other": 3787,
+        "rejected": 1942,
+        "rejection_reasons": {
+          "no_signal": 576,
+          "orderflow_veto_long:imb_5s=-0.62<-0.50": 44,
+          "orderflow_veto_long:imb_5s=-0.65<-0.50": 108,
+          "orderflow_veto_long:imb_5s=-0.67<-0.50": 44,
+          "orderflow_veto_long:imb_5s=-0.68<-0.50": 72,
+          "orderflow_veto_long:imb_5s=-0.70<-0.50": 30,
+          "orderflow_veto_long:imb_5s=-0.73<-0.50": 148,
+          "orderflow_veto_long:imb_5s=-0.76<-0.50": 50,
+          "orderflow_veto_long:imb_5s=-0.78<-0.50": 96,
+          "prediction_low_confidence": 554
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 3122,
+        "bucket_start_utc": "2026-02-16T06:00:00+00:00",
+        "other": 3122,
+        "rejected": 4652,
+        "rejection_reasons": {
+          "no_signal": 2046,
+          "orderflow_veto_long:imb_5s=-0.57<-0.50": 92,
+          "orderflow_veto_long:imb_5s=-0.59<-0.50": 156,
+          "orderflow_veto_long:imb_5s=-0.60<-0.50": 86,
+          "orderflow_veto_long:imb_5s=-0.61<-0.50": 78,
+          "orderflow_veto_long:imb_5s=-0.62<-0.50": 76,
+          "orderflow_veto_long:imb_5s=-0.63<-0.50": 106,
+          "orderflow_veto_long:imb_5s=-0.72<-0.50": 68,
+          "orderflow_veto_long:imb_5s=-0.74<-0.50": 50,
+          "prediction_low_confidence": 1640
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 2953,
+        "bucket_start_utc": "2026-02-16T06:00:00+00:00",
+        "other": 2953,
+        "rejected": 2884,
+        "rejection_reasons": {
+          "no_signal": 2764,
+          "orderflow_veto_long:imb_5s=-0.50<-0.50": 4,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 64,
+          "orderflow_veto_long:imb_5s=-0.53<-0.50": 2,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 12,
+          "prediction_blocked": 38
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "accepted": 1313,
+        "bucket_start_utc": "2026-02-16T06:15:00+00:00",
+        "other": 1313,
+        "rejected": 4248,
+        "rejection_reasons": {
+          "no_signal": 2308,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 134,
+          "orderflow_veto_long:imb_5s=-0.56<-0.50": 100,
+          "orderflow_veto_long:imb_5s=-0.57<-0.50": 190,
+          "orderflow_veto_long:imb_5s=-0.58<-0.50": 196,
+          "orderflow_veto_long:imb_5s=-0.61<-0.50": 96,
+          "orderflow_veto_long:imb_5s=-0.65<-0.50": 82,
+          "orderflow_veto_long:imb_5s=-0.74<-0.50": 88,
+          "orderflow_veto_long:imb_5s=-0.77<-0.50": 168,
+          "orderflow_veto_long:imb_5s=-0.79<-0.50": 198
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "accepted": 1703,
+        "bucket_start_utc": "2026-02-16T06:15:00+00:00",
+        "other": 1703,
+        "rejected": 2736,
+        "rejection_reasons": {
+          "no_signal": 666,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 86,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 62,
+          "orderflow_veto_long:imb_5s=-0.55<-0.50": 60,
+          "orderflow_veto_long:imb_5s=-0.56<-0.50": 110,
+          "orderflow_veto_long:imb_5s=-0.60<-0.50": 88,
+          "orderflow_veto_long:imb_5s=-0.63<-0.50": 154,
+          "orderflow_veto_long:imb_5s=-0.68<-0.50": 138,
+          "orderflow_veto_long:imb_5s=-0.79<-0.50": 80,
+          "prediction_low_confidence": 952
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "accepted": 2448,
+        "bucket_start_utc": "2026-02-16T06:15:00+00:00",
+        "other": 2448,
+        "rejected": 968,
+        "rejection_reasons": {
+          "cost_data_quality": 6,
+          "no_signal": 878,
+          "orderflow_veto_long:imb_5s=-0.50<-0.50": 12,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 36,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 30,
+          "orderflow_veto_long:imb_5s=-0.55<-0.50": 6
+        },
+        "symbol": "SOLUSDT"
+      }
+    ],
+    "symbol_summary": {
+      "BTCUSDT": {
+        "accept_rate_pct": 19.287,
+        "accepted": 54304,
+        "other": 54307,
+        "rejected": 172950,
+        "top_rejection_reasons": {
+          "EV_BELOW_MIN": 5318,
+          "P_BELOW_PMIN": 18290,
+          "correlation_blocked": 1810,
+          "cost_data_quality": 2512,
+          "model_direction_mismatch": 6066,
+          "no_signal": 116992,
+          "orderflow_veto_long:imb_5s=-0.52<-0.50": 350,
+          "orderflow_veto_long:imb_5s=-0.54<-0.50": 310,
+          "orderflow_veto_long:imb_5s=-0.79<-0.50": 370,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 308,
+          "prediction_blocked": 1324,
+          "prediction_low_confidence": 11618
+        }
+      },
+      "ETHUSDT": {
+        "accept_rate_pct": 16.404,
+        "accepted": 44234,
+        "other": 44234,
+        "rejected": 181192,
+        "top_rejection_reasons": {
+          "EV_BELOW_MIN": 3502,
+          "P_BELOW_PMIN": 12443,
+          "cost_data_quality": 2248,
+          "model_direction_mismatch": 11604,
+          "no_signal": 116412,
+          "orderflow_veto_long:imb_5s=-0.51<-0.50": 382,
+          "orderflow_veto_short:imb_5s=0.50>0.50": 332,
+          "orderflow_veto_short:imb_5s=0.52>0.50": 412,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 450,
+          "orderflow_veto_short:imb_5s=0.55>0.50": 340,
+          "prediction_blocked": 514,
+          "prediction_low_confidence": 24639
+        }
+      },
+      "SOLUSDT": {
+        "accept_rate_pct": 17.266,
+        "accepted": 37739,
+        "other": 37739,
+        "rejected": 143098,
+        "top_rejection_reasons": {
+          "EV_BELOW_MIN": 1460,
+          "P_BELOW_PMIN": 16171,
+          "correlation_blocked": 1280,
+          "cost_data_quality": 1006,
+          "no_signal": 118311,
+          "orderflow_veto_short:imb_5s=0.50>0.50": 168,
+          "orderflow_veto_short:imb_5s=0.51>0.50": 308,
+          "orderflow_veto_short:imb_5s=0.53>0.50": 258,
+          "orderflow_veto_short:imb_5s=0.54>0.50": 220,
+          "prediction_blocked": 2264,
+          "tradeability_veto:net_edge=-4.4bps<4.0bps": 218,
+          "tradeability_veto:net_edge=1.2bps<4.0bps": 392
+        }
+      }
+    },
+    "total_rows": 769797
+  },
+  "lifecycle": {
+    "buckets_15m": [
+      {
+        "bucket_start_utc": "2026-02-16T00:15:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 9,
+        "status_counts": {
+          "canceled": 1,
+          "rejected": 8
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T00:15:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 4,
+        "status_counts": {
+          "canceled": 2,
+          "rejected": 2
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T00:15:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 10,
+        "status_counts": {
+          "canceled": 4,
+          "rejected": 6
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T00:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 20,
+        "status_counts": {
+          "canceled": 2,
+          "rejected": 18
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T00:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 20,
+        "status_counts": {
+          "canceled": 8,
+          "filled": 2,
+          "rejected": 11
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T00:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 12,
+        "status_counts": {
+          "canceled": 6,
+          "rejected": 6
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T00:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 22,
+        "status_counts": {
+          "canceled": 5,
+          "rejected": 17
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T00:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 22,
+        "status_counts": {
+          "canceled": 5,
+          "rejected": 17
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T00:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 20,
+        "status_counts": {
+          "canceled": 10,
+          "rejected": 10
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T01:00:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 15,
+        "status_counts": {
+          "canceled": 5,
+          "filled": 1,
+          "rejected": 10
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T01:00:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 15,
+        "status_counts": {
+          "canceled": 2,
+          "rejected": 13
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T01:00:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 6,
+        "status_counts": {
+          "canceled": 1,
+          "filled": 1,
+          "rejected": 5
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T01:15:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 25,
+        "status_counts": {
+          "canceled": 9,
+          "rejected": 16
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T01:15:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 17,
+        "status_counts": {
+          "canceled": 4,
+          "rejected": 13
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T01:15:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 12,
+        "status_counts": {
+          "canceled": 3,
+          "rejected": 9
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T01:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 10,
+        "status_counts": {
+          "canceled": 1,
+          "rejected": 9
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T01:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 10,
+        "status_counts": {
+          "canceled": 2,
+          "rejected": 8
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T01:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 22,
+        "status_counts": {
+          "canceled": 2,
+          "rejected": 20
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T01:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 14,
+        "status_counts": {
+          "canceled": 3,
+          "rejected": 11
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T01:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 8,
+        "status_counts": {
+          "canceled": 4,
+          "rejected": 4
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T01:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 10,
+        "status_counts": {
+          "canceled": 4,
+          "rejected": 6
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T02:00:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 6,
+        "status_counts": {
+          "canceled": 3,
+          "rejected": 3
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T02:00:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 16,
+        "status_counts": {
+          "canceled": 4,
+          "rejected": 12
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T02:00:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 19,
+        "status_counts": {
+          "canceled": 8,
+          "rejected": 11
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T02:15:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 14,
+        "status_counts": {
+          "canceled": 2,
+          "filled": 2,
+          "rejected": 11
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T02:15:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 15,
+        "status_counts": {
+          "canceled": 4,
+          "rejected": 11
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T02:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 13,
+        "status_counts": {
+          "canceled": 5,
+          "rejected": 8
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T02:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 22,
+        "status_counts": {
+          "canceled": 9,
+          "rejected": 13
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T02:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 19,
+        "status_counts": {
+          "canceled": 5,
+          "rejected": 14
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T02:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 4,
+        "status_counts": {
+          "canceled": 1,
+          "rejected": 3
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T02:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 22,
+        "status_counts": {
+          "canceled": 8,
+          "filled": 1,
+          "rejected": 13
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T02:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 4,
+        "status_counts": {
+          "canceled": 2,
+          "rejected": 2
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T03:00:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 17,
+        "status_counts": {
+          "canceled": 6,
+          "rejected": 11
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T03:00:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 6,
+        "status_counts": {
+          "canceled": 3,
+          "filled": 1,
+          "rejected": 3
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T03:00:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 14,
+        "status_counts": {
+          "canceled": 4,
+          "rejected": 10
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T03:15:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 14,
+        "status_counts": {
+          "canceled": 10,
+          "rejected": 4
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T03:15:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 6,
+        "status_counts": {
+          "canceled": 3,
+          "filled": 2,
+          "rejected": 2
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T03:15:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 12,
+        "status_counts": {
+          "canceled": 10,
+          "rejected": 2
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T03:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 6,
+        "status_counts": {
+          "canceled": 6
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T03:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 3,
+        "status_counts": {
+          "canceled": 3
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T04:00:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 6,
+        "status_counts": {
+          "canceled": 6
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T04:00:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 1,
+        "status_counts": {
+          "filled": 2
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T04:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 11,
+        "status_counts": {
+          "canceled": 11,
+          "filled": 14
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T04:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 9,
+        "status_counts": {
+          "canceled": 9,
+          "filled": 14
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T04:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 9,
+        "status_counts": {
+          "canceled": 8,
+          "filled": 14
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T04:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 5,
+        "status_counts": {
+          "canceled": 5
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T04:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 32,
+        "status_counts": {
+          "canceled": 32
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T04:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 30,
+        "status_counts": {
+          "canceled": 29,
+          "filled": 2
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T05:00:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 20,
+        "status_counts": {
+          "canceled": 20
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T05:00:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 28,
+        "status_counts": {
+          "canceled": 27,
+          "filled": 2
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T05:00:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 22,
+        "status_counts": {
+          "canceled": 22
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T05:15:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 20,
+        "status_counts": {
+          "canceled": 20
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T05:15:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 20,
+        "status_counts": {
+          "canceled": 20
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T05:15:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 12,
+        "status_counts": {
+          "canceled": 12
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T05:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 30,
+        "status_counts": {
+          "canceled": 30
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T05:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 24,
+        "status_counts": {
+          "canceled": 24
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T05:30:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 16,
+        "status_counts": {
+          "canceled": 15,
+          "pending": 1
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T05:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 28,
+        "status_counts": {
+          "canceled": 28
+        },
+        "symbol": "BTCUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T05:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 20,
+        "status_counts": {
+          "canceled": 20
+        },
+        "symbol": "ETHUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T05:45:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 24,
+        "status_counts": {
+          "canceled": 24
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T06:00:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 3,
+        "status_counts": {
+          "canceled": 3
+        },
+        "symbol": "SOLUSDT"
+      },
+      {
+        "bucket_start_utc": "2026-02-16T06:15:00+00:00",
+        "fallback_orders": 0,
+        "maker_attempts": 4,
+        "status_counts": {
+          "canceled": 4
+        },
+        "symbol": "BTCUSDT"
+      }
+    ],
+    "maker_churn": {
+      "fallback_orders": 0,
+      "maker_attempt_canceled": 548,
+      "maker_attempts": 909,
+      "maker_cancel_rate_pct": 60.286
+    },
+    "symbol_summary": {
+      "BTCUSDT": {
+        "canceled_count": 181,
+        "canceled_to_filled_ratio": 12.0667,
+        "filled_count": 15,
+        "status_counts": {
+          "canceled": 181,
+          "filled": 15,
+          "rejected": 118
+        }
+      },
+      "ETHUSDT": {
+        "canceled_count": 188,
+        "canceled_to_filled_ratio": 7.8333,
+        "filled_count": 24,
+        "status_counts": {
+          "canceled": 188,
+          "filled": 24,
+          "rejected": 122
+        }
+      },
+      "SOLUSDT": {
+        "canceled_count": 179,
+        "canceled_to_filled_ratio": 9.4211,
+        "filled_count": 19,
+        "status_counts": {
+          "canceled": 179,
+          "filled": 19,
+          "pending": 1,
+          "rejected": 112
+        }
+      }
+    },
+    "total_rows": 959
+  }
+}

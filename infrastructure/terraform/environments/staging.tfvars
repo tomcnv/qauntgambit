@@ -1,0 +1,9 @@
+environment            = "staging"
+aws_region             = "ap-southeast-1"
+root_domain            = "quantgambit.com"
+instance_type          = "m7i-flex.2xlarge"
+root_volume_size_gb    = 180
+root_volume_iops       = 3000
+root_volume_throughput = 125
+create_route53_zone    = false
+manage_route53_records = false

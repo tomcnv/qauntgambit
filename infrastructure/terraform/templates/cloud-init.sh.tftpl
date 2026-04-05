@@ -1,0 +1,125 @@
+#!/bin/bash
+set -euxo pipefail
+
+dnf update -y
+dnf install -y \
+  docker \
+  docker-compose-plugin \
+  nginx \
+  git \
+  jq \
+  unzip \
+  awscli \
+  policycoreutils-python-utils \
+  amazon-cloudwatch-agent \
+  certbot \
+  python3-certbot-nginx \
+  python3.11 \
+  python3.11-pip \
+  python3.11-setuptools \
+  python3.11-wheel \
+  python3.11-devel \
+  rsync \
+  nodejs \
+  npm
+
+systemctl enable --now docker
+systemctl enable --now nginx
+systemctl enable --now amazon-ssm-agent
+systemctl enable --now amazon-cloudwatch-agent || true
+
+usermod -aG docker ec2-user
+
+cat >/etc/sysctl.d/99-${project_name}.conf <<'SYSCTL'
+fs.file-max = 2097152
+fs.inotify.max_user_watches = 1048576
+net.core.somaxconn = 4096
+net.ipv4.tcp_max_syn_backlog = 4096
+net.ipv4.ip_local_port_range = 10240 65535
+vm.swappiness = 10
+vm.dirty_background_ratio = 5
+vm.dirty_ratio = 20
+SYSCTL
+sysctl --system
+
+cat >/etc/security/limits.d/99-${project_name}.conf <<'LIMITS'
+* soft nofile 1048576
+* hard nofile 1048576
+* soft nproc  65535
+* hard nproc  65535
+LIMITS
+
+mkdir -p /etc/docker
+cat >/etc/docker/daemon.json <<'DOCKER'
+{
+  "log-driver": "local",
+  "log-opts": {
+    "max-size": "20m",
+    "max-file": "5"
+  },
+  "live-restore": true,
+  "features": {
+    "buildkit": true
+  }
+}
+DOCKER
+systemctl restart docker
+
+if [ ! -f /swapfile ]; then
+  fallocate -l ${swap_size_gb}G /swapfile
+  chmod 600 /swapfile
+  mkswap /swapfile
+  swapon /swapfile
+  echo '/swapfile swap swap defaults 0 0' >> /etc/fstab
+fi
+
+mkdir -p /opt/${project_name}/{compose,config,logs,bin,release}
+mkdir -p /var/www/${project_name}/{landing,dashboard,bootstrap}
+
+cat >/var/www/${project_name}/bootstrap/index.html <<'HTML'
+${bootstrap_page}
+HTML
+
+cat >/etc/nginx/conf.d/${project_name}.conf <<'NGINX'
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name ${root_domain} ${www_domain} ${dashboard_domain} ${api_domain} ${bot_domain};
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+
+    location / {
+        root /var/www/${project_name}/bootstrap;
+        try_files $uri $uri/ /index.html;
+    }
+}
+NGINX
+
+mkdir -p /var/www/certbot
+nginx -t
+systemctl reload nginx
+
+cat >/opt/${project_name}/config/host.env.example <<'ENVFILE'
+PROJECT_NAME=${project_name}
+ROOT_DOMAIN=${root_domain}
+WWW_DOMAIN=${www_domain}
+DASHBOARD_DOMAIN=${dashboard_domain}
+API_DOMAIN=${api_domain}
+BOT_DOMAIN=${bot_domain}
+LETSENCRYPT_EMAIL=${letsencrypt_email}
+AWS_REGION=${aws_region}
+APP_ENV_SECRET_ID=${app_env_secret_id}
+CF_ORIGIN_SECRET_ID=${cloudflare_origin_secret_id}
+ENVFILE
+
+cat >/opt/${project_name}/README <<'README'
+This host was bootstrapped by Terraform.
+
+Next steps:
+1. Unpack the application release to /opt/${project_name}/release/<release-name>.
+2. Run deploy/single-ec2/deploy.sh from that release tree.
+3. If Cloudflare origin TLS is enabled, deploy.sh will install the origin cert automatically from Secrets Manager.
+4. Otherwise install TLS separately after DNS is live.
+README

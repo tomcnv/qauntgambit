@@ -1,0 +1,37 @@
+version: "3.9"
+
+# QuantGambit Local Development - Canonical DB Cluster
+# Redis runs natively via Homebrew.
+# A single Timescale/Postgres 15 cluster serves both:
+# - platform_db on localhost:${PLATFORM_DB_PORT}
+# - quantgambit_bot on localhost:${BOT_DB_PORT}
+#
+# Both ports map to the same container because the original local data lives
+# in one canonical Timescale cluster volume.
+
+services:
+  db:
+    image: timescale/timescaledb:2.25.2-pg15
+    container_name: quantgambit-db
+    restart: unless-stopped
+    ports:
+      - "${PLATFORM_DB_PORT:-5432}:5432"
+      - "${BOT_DB_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgresql-timescale.conf:/etc/postgresql/postgresql.conf:ro
+    command: ["-c", "config_file=/etc/postgresql/postgresql.conf"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U platform -d platform_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          memory: 4g
+
+volumes:
+  postgres_data:
+    external: true
+    name: docker_postgres_data

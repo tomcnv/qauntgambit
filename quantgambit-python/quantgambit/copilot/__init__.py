@@ -1,0 +1,41 @@
+"""Trading Copilot Agent package."""
+
+from quantgambit.copilot.models import (
+    AgentEvent,
+    Conversation,
+    ConversationSummary,
+    DoneEvent,
+    ErrorEvent,
+    LLMChunk,
+    Message,
+    SettingsMutation,
+    SettingsMutationProposal,
+    SettingsSnapshot,
+    TextDelta,
+    ToolCallRecord,
+    ToolCallResult,
+    ToolCallStart,
+    ToolDefinition,
+    ToolResult,
+    TradeContext,
+)
+
+__all__ = [
+    "AgentEvent",
+    "Conversation",
+    "ConversationSummary",
+    "DoneEvent",
+    "ErrorEvent",
+    "LLMChunk",
+    "Message",
+    "SettingsMutation",
+    "SettingsMutationProposal",
+    "SettingsSnapshot",
+    "TextDelta",
+    "ToolCallRecord",
+    "ToolCallResult",
+    "ToolCallStart",
+    "ToolDefinition",
+    "ToolResult",
+    "TradeContext",
+]

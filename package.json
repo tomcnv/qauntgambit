@@ -1,0 +1,34 @@
+{
+  "name": "deeptrader",
+  "version": "1.0.0",
+  "description": "DeepTrader - Autonomous Trading Platform",
+  "private": true,
+  "scripts": {
+    "start": "./pm2-start.sh",
+    "stop": "./pm2-stop.sh",
+    "restart": "pm2 restart all",
+    "status": "pm2 list",
+    "logs": "pm2 logs",
+    "logs:backend": "pm2 logs deeptrader-backend",
+    "logs:python": "pm2 logs python-control-manager",
+    "logs:monitoring": "pm2 logs python-monitoring-api",
+    "monitor": "pm2 monit",
+    "start:frontend": "cd deeptrader-dashhboard && npm run dev",
+    "cleanup": "./cleanup-workers.sh",
+    "workers": "ps aux | grep -E 'data_worker|feature_worker|strategy_worker|risk_worker|execution_worker' | grep python | grep -v grep",
+    "legacy:start": "./start-all.sh",
+    "legacy:stop": "./stop-all.sh"
+  },
+  "keywords": [
+    "trading",
+    "crypto",
+    "ai",
+    "python",
+    "nodejs"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
+}
